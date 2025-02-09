@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "Wurm",
+    "breeder": "Nine Weeks Harvest",
+    "description": "This is a description of Mylar Magic",
+    "thc": "22%",
+    "cbd": "0.51%",
+    "terpenes": "β-Caryophyllen",
+    "effect": "",
+    "imageUrl": "https://www.tomhemps.com/wp-content/uploads/2024/04/mmstrain.jpg"
+  },
+  {
+    "id": 2,
+    "title": "White Widow",
+    "description": "This is a description of White Widow",
+    "thc": "18%",
+    "cbd": "0.3%",
+    "terpenes": "β-Caryophyllen",
+    "effect": "",
+    "imageUrl": "https://shop.greenhouseseeds.nl/images/thumbnails/346/453/detailed/10/WHITE_WIDOW.jpg"
+  }
+]
