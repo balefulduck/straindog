@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "title": "Wurm",
+    "title": "Mylar Magic",
     "breeder": "Nine Weeks Harvest",
     "description": "This is a description of Mylar Magic",
     "thc": "22%",
@@ -19,5 +19,16 @@
     "terpenes": "β-Caryophyllen",
     "effect": "",
     "imageUrl": "https://shop.greenhouseseeds.nl/images/thumbnails/346/453/detailed/10/WHITE_WIDOW.jpg"
+  },
+  {
+    "id": 1739200700793,
+    "title": "GMO Violet",
+    "breeder": "Saarseeds",
+    "description": "Lorem",
+    "thc": "12",
+    "cbd": "3",
+    "terpenes": "β-Caryophyllen",
+    "effect": "Euphorisch",
+    "imageUrl": "https://saarseeds.de/media/image/product/6/lg/ultra-violet-gmo-5er-pack-indica-saarseeds.jpg"
   }
 ]

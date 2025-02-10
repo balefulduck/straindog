@@ -76,7 +76,7 @@ const ProductShowcase = () => {
   };
 
   if (seedList.length === 0) {
-    return <div>Loading...</div>;
+    return <div>No data</div>;
   }
 
   const currentSeed = seedList[currentIndex];
@@ -123,7 +123,7 @@ const ProductShowcase = () => {
       <div className="fixed bottom-4 right-4">
         <button
           onClick={() => setIsEditorOpen(true)}
-          className="bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors"
+          className="bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
