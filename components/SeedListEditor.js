@@ -12,8 +12,14 @@ const SeedListEditor = ({ isOpen, onClose, seedList, onUpdateSeedList }) => {
     description: '',
     thc: '',
     cbd: '',
-    terpenes: '',
+    terpenes: [{ name: '', percentage: '' }],
+    genetics: {
+      mother: '',
+      father: '',
+      type: ''
+    },
     effect: '',
+    flowertime: '',
     imageUrl: '',
   });
 
@@ -25,8 +31,14 @@ const SeedListEditor = ({ isOpen, onClose, seedList, onUpdateSeedList }) => {
       description: '',
       thc: '',
       cbd: '',
-      terpenes: '',
+      terpenes: [{ name: '', percentage: '' }],
+      genetics: {
+        mother: '',
+        father: '',
+        type: ''
+      },
       effect: '',
+      flowertime: '',
       imageUrl: '',
     });
     setSelectedSeed(null);
@@ -39,9 +51,48 @@ const SeedListEditor = ({ isOpen, onClose, seedList, onUpdateSeedList }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    if (name.startsWith('genetics.')) {
+      const geneticField = name.split('.')[1];
+      setEditForm(prev => ({
+        ...prev,
+        genetics: {
+          ...prev.genetics,
+          [geneticField]: value
+        }
+      }));
+    } else {
+      setEditForm(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    }
+  };
+
+  const handleTerpeneChange = (index, field, value) => {
+    setEditForm(prev => {
+      const newTerpenes = [...prev.terpenes];
+      newTerpenes[index] = {
+        ...newTerpenes[index],
+        [field]: value
+      };
+      return {
+        ...prev,
+        terpenes: newTerpenes
+      };
+    });
+  };
+
+  const addTerpene = () => {
     setEditForm(prev => ({
       ...prev,
-      [name]: value
+      terpenes: [...prev.terpenes, { name: '', percentage: '' }]
+    }));
+  };
+
+  const removeTerpene = (index) => {
+    setEditForm(prev => ({
+      ...prev,
+      terpenes: prev.terpenes.filter((_, i) => i !== index)
     }));
   };
 
@@ -52,7 +103,6 @@ const SeedListEditor = ({ isOpen, onClose, seedList, onUpdateSeedList }) => {
       : [...seeds, { ...editForm, id: Date.now() }];
     
     try {
-      // Here we'll add the API call to update the server
       const response = await fetch('/api/seeds', {
         method: 'POST',
         headers: {
@@ -149,38 +199,108 @@ const SeedListEditor = ({ isOpen, onClose, seedList, onUpdateSeedList }) => {
                 name="breeder"
                 value={editForm.breeder}
                 onChange={handleInputChange}
+                required
               />
             </div>
             <div className={styles.formField}>
-              <label htmlFor="thc">THC %</label>
-              <input
-                type="text"
-                id="thc"
-                name="thc"
-                value={editForm.thc}
+              <label htmlFor="description">Description</label>
+              <textarea
+                id="description"
+                name="description"
+                value={editForm.description}
                 onChange={handleInputChange}
+                required
               />
             </div>
+
             <div className={styles.formField}>
-              <label htmlFor="cbd">CBD %</label>
+              <label htmlFor="flowertime">Flowering Time (days)</label>
               <input
-                type="text"
-                id="cbd"
-                name="cbd"
-                value={editForm.cbd}
+                type="number"
+                id="flowertime"
+                name="flowertime"
+                value={editForm.flowertime}
                 onChange={handleInputChange}
+                required
               />
             </div>
-            <div className={styles.formField}>
-              <label htmlFor="terpenes">Terpenes</label>
-              <input
-                type="text"
-                id="terpenes"
-                name="terpenes"
-                value={editForm.terpenes}
-                onChange={handleInputChange}
-              />
+
+            <div className={styles.formSection}>
+              <h3>Genetics</h3>
+              <div className={styles.formGrid}>
+                <div className={styles.formField}>
+                  <label htmlFor="genetics.mother">Mother</label>
+                  <input
+                    type="text"
+                    id="genetics.mother"
+                    name="genetics.mother"
+                    value={editForm.genetics.mother}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className={styles.formField}>
+                  <label htmlFor="genetics.father">Father</label>
+                  <input
+                    type="text"
+                    id="genetics.father"
+                    name="genetics.father"
+                    value={editForm.genetics.father}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className={styles.formField}>
+                  <label htmlFor="genetics.type">Type</label>
+                  <input
+                    type="text"
+                    id="genetics.type"
+                    name="genetics.type"
+                    value={editForm.genetics.type}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
             </div>
+
+            <div className={styles.formSection}>
+              <h3>Terpenes</h3>
+              {editForm.terpenes.map((terpene, index) => (
+                <div key={index} className={styles.terpeneEntry}>
+                  <div className={styles.formGrid}>
+                    <div className={styles.formField}>
+                      <label>Name</label>
+                      <input
+                        type="text"
+                        value={terpene.name}
+                        onChange={(e) => handleTerpeneChange(index, 'name', e.target.value)}
+                      />
+                    </div>
+                    <div className={styles.formField}>
+                      <label>Percentage</label>
+                      <input
+                        type="text"
+                        value={terpene.percentage}
+                        onChange={(e) => handleTerpeneChange(index, 'percentage', e.target.value)}
+                      />
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => removeTerpene(index)}
+                    className={styles.removeTerpeneButton}
+                  >
+                    Remove
+                  </button>
+                </div>
+              ))}
+              <button
+                type="button"
+                onClick={addTerpene}
+                className={styles.addTerpeneButton}
+              >
+                + Add Terpene
+              </button>
+            </div>
+
             <div className={styles.formField}>
               <label htmlFor="effect">Effect</label>
               <input
@@ -191,6 +311,29 @@ const SeedListEditor = ({ isOpen, onClose, seedList, onUpdateSeedList }) => {
                 onChange={handleInputChange}
               />
             </div>
+
+            <div className={styles.formField}>
+              <label htmlFor="thc">THC %</label>
+              <input
+                type="text"
+                id="thc"
+                name="thc"
+                value={editForm.thc}
+                onChange={handleInputChange}
+              />
+            </div>
+
+            <div className={styles.formField}>
+              <label htmlFor="cbd">CBD %</label>
+              <input
+                type="text"
+                id="cbd"
+                name="cbd"
+                value={editForm.cbd}
+                onChange={handleInputChange}
+              />
+            </div>
+
             <div className={styles.formField}>
               <label htmlFor="imageUrl">Image URL</label>
               <input
@@ -202,30 +345,21 @@ const SeedListEditor = ({ isOpen, onClose, seedList, onUpdateSeedList }) => {
                 required
               />
             </div>
-            <div className={styles.formField + ' ' + styles.fullWidth}>
-              <label htmlFor="description">Description</label>
-              <textarea
-                id="description"
-                name="description"
-                value={editForm.description}
-                onChange={handleInputChange}
-                rows="4"
-              />
-            </div>
           </div>
+
           <div className={styles.formActions}>
+            <button type="submit" className={styles.submitButton}>
+              {selectedSeed ? 'Update' : 'Create'} Seed
+            </button>
             {selectedSeed && (
               <button
                 type="button"
                 onClick={() => handleDelete(selectedSeed.id)}
                 className={styles.deleteButton}
               >
-                Delete
+                Delete Seed
               </button>
             )}
-            <button type="submit" className={styles.saveButton}>
-              {selectedSeed ? 'Update' : 'Create'} Seed
-            </button>
           </div>
         </form>
       </div>

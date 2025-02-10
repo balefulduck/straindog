@@ -6,18 +6,57 @@
     "description": "This is a description of Mylar Magic",
     "thc": "22%",
     "cbd": "0.51%",
-    "terpenes": "β-Caryophyllen",
-    "effect": "",
+    "terpenes": [
+      {
+        "name": "β-Caryophyllen",
+        "percentage": "0.35%"
+      },
+      {
+        "name": "Myrcene",
+        "percentage": "0.25%"
+      },
+      {
+        "name": "Limonene",
+        "percentage": "0.15%"
+      }
+    ],
+    "genetics": {
+      "mother": "Northern Lights",
+      "father": "Hindu Kush",
+      "type": "Indica dominant hybrid"
+    },
+    "effect": "Lorem",
+    "flowertime": "63",
     "imageUrl": "https://www.tomhemps.com/wp-content/uploads/2024/04/mmstrain.jpg"
   },
   {
     "id": 2,
     "title": "White Widow",
+    "breeder": "Green House Seeds",
     "description": "This is a description of White Widow",
     "thc": "18%",
     "cbd": "0.3%",
-    "terpenes": "β-Caryophyllen",
-    "effect": "",
+    "terpenes": [
+      {
+        "name": "β-Caryophyllen",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "Pinene",
+        "percentage": "0.20%"
+      },
+      {
+        "name": "Terpinolene",
+        "percentage": "0.10%"
+      }
+    ],
+    "genetics": {
+      "mother": "Brazilian Sativa",
+      "father": "South Indian Indica",
+      "type": "Balanced hybrid"
+    },
+    "effect": "Ipsum",
+    "flowertime": "58",
     "imageUrl": "https://shop.greenhouseseeds.nl/images/thumbnails/346/453/detailed/10/WHITE_WIDOW.jpg"
   },
   {
@@ -27,7 +66,25 @@
     "description": "Lorem",
     "thc": "12",
     "cbd": "3",
-    "terpenes": "β-Caryophyllen",
+    "terpenes": [
+      {
+        "name": "β-Caryophyllen",
+        "percentage": "0.35%"
+      },
+      {
+        "name": "Myrcene",
+        "percentage": "0.25%"
+      },
+      {
+        "name": "Limonene",
+        "percentage": "0.15%"
+      }
+    ],
+    "genetics": {
+      "mother": "Northern Lights",
+      "father": "Hindu Kush",
+      "type": "Indica dominant hybrid"
+    },
     "effect": "Euphorisch",
     "imageUrl": "https://saarseeds.de/media/image/product/6/lg/ultra-violet-gmo-5er-pack-indica-saarseeds.jpg"
   }
