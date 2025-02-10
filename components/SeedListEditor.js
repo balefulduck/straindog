@@ -21,6 +21,9 @@ const SeedListEditor = ({ isOpen, onClose, seedList, onUpdateSeedList }) => {
     effect: '',
     flowertime: '',
     imageUrl: '',
+    seedlist: {
+      seedcount: null
+    }
   });
 
   const resetForm = () => {
@@ -40,6 +43,9 @@ const SeedListEditor = ({ isOpen, onClose, seedList, onUpdateSeedList }) => {
       effect: '',
       flowertime: '',
       imageUrl: '',
+      seedlist: {
+        seedcount: null
+      }
     });
     setSelectedSeed(null);
   };
@@ -58,6 +64,15 @@ const SeedListEditor = ({ isOpen, onClose, seedList, onUpdateSeedList }) => {
         genetics: {
           ...prev.genetics,
           [geneticField]: value
+        }
+      }));
+    } else if (name.startsWith('seedlist.')) {
+      const seedlistField = name.split('.')[1];
+      setEditForm(prev => ({
+        ...prev,
+        seedlist: {
+          ...prev.seedlist,
+          [seedlistField]: value
         }
       }));
     } else {
@@ -343,6 +358,19 @@ const SeedListEditor = ({ isOpen, onClose, seedList, onUpdateSeedList }) => {
                 value={editForm.imageUrl}
                 onChange={handleInputChange}
                 required
+              />
+            </div>
+
+            <div className={styles.formField}>
+              <label htmlFor="seedcount">Seeds per Pack</label>
+              <input
+                type="number"
+                id="seedcount"
+                name="seedlist.seedcount"
+                value={editForm.seedlist?.seedcount || ''}
+                onChange={handleInputChange}
+                min="0"
+                placeholder="Number of seeds per pack"
               />
             </div>
           </div>
