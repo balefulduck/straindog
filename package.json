@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "framer-motion": "^12.4.2",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.2",
     "next": "15.1.6",
