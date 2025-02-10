@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="400" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <g>
+    <!-- Flower Logo -->
+    <g transform="translate(0, 50) scale(0.8)">
+      <path d="M100 200 L150 100 L200 200 Z" fill="#8BC5CD"/>
+      <path d="M150 100 L200 0 L250 100 Z" fill="#B5D31C"/>
+      <path d="M200 200 L250 100 L300 200 Z" fill="#93117E"/>
+      <path d="M150 300 L200 200 L250 300 Z" fill="#9BA419"/>
+      <path d="M50 100 L100 200 L150 100 Z" fill="#E8991C"/>
+      <path d="M250 100 L300 200 L350 100 Z" fill="#3C8ECD"/>
+    </g>
+    <!-- Dr. Cannabis Text -->
+    <text x="400" y="200" font-family="script" font-size="120" fill="#1B3E4B">Dr. Cannabis</text>
+  </g>
+</svg>
