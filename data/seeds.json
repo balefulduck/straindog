@@ -1,15 +1,279 @@
 [
   {
     "id": 1,
-    "title": "Mylar Magic",
-    "breeder": "Nine Weeks Harvest",
-    "description": "This is a description of Mylar Magic",
-    "thc": "22%",
-    "cbd": "0.51%",
+    "title": "GG4",
+    "breeder": "420 Pharma",
+    "description": "GG4, also known as Gorilla Glue #4, is a potent hybrid strain known for its heavy resin production and relaxing effects.",
+    "thc": "25%",
+    "cbd": "0.1%",
     "terpenes": [
       {
-        "name": "β-Caryophyllen",
+        "name": "β-Caryophyllene",
+        "percentage": "0.40%"
+      },
+      {
+        "name": "Myrcene",
         "percentage": "0.35%"
+      },
+      {
+        "name": "Limonene",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "Chem Sister",
+      "father": "Chocolate Diesel",
+      "type": "Hybrid"
+    },
+    "effect": "Relaxing, euphoric",
+    "flowertime": "63",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.unsplash.com/photo-1603909223429-69bb7101f420?w=800&auto=format&fit=crop"
+  },
+  {
+    "id": 2,
+    "title": "Gelato x Purple Punch",
+    "breeder": "Seed Stockers",
+    "description": "A delicious hybrid combining the sweet, dessert-like flavors of Gelato with the grape candy notes of Purple Punch.",
+    "thc": "24%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "Limonene",
+        "percentage": "0.45%"
+      },
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "Linalool",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "Gelato",
+      "father": "Purple Punch",
+      "type": "Indica dominant hybrid"
+    },
+    "effect": "Relaxing, creative",
+    "flowertime": "56",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.pexels.com/photos/7584336/pexels-photo-7584336.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "id": 3,
+    "title": "Amnesia",
+    "breeder": "SaarSeeds",
+    "description": "A potent sativa-dominant hybrid known for its energetic and uplifting effects.",
+    "thc": "22%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "Terpinolene",
+        "percentage": "0.40%"
+      },
+      {
+        "name": "Myrcene",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "Limonene",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "Amnesia Haze",
+      "father": "Super Silver Haze",
+      "type": "Sativa dominant hybrid"
+    },
+    "effect": "Energetic, uplifting",
+    "flowertime": "70",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.pexels.com/photos/7584337/pexels-photo-7584337.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "id": 4,
+    "title": "Brain Damage",
+    "breeder": "SaarSeeds",
+    "description": "A powerful hybrid strain that delivers a strong cerebral effect.",
+    "thc": "23%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "Myrcene",
+        "percentage": "0.35%"
+      },
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "Limonene",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "OG Kush",
+      "father": "Headband",
+      "type": "Hybrid"
+    },
+    "effect": "Cerebral, euphoric",
+    "flowertime": "65",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.pexels.com/photos/7584338/pexels-photo-7584338.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "id": 5,
+    "title": "Gelato",
+    "breeder": "SaarSeeds",
+    "description": "A sweet and creamy hybrid with powerful euphoric effects.",
+    "thc": "25%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "Limonene",
+        "percentage": "0.40%"
+      },
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.35%"
+      },
+      {
+        "name": "Linalool",
+        "percentage": "0.20%"
+      }
+    ],
+    "genetics": {
+      "mother": "Sunset Sherbert",
+      "father": "Thin Mint GSC",
+      "type": "Balanced hybrid"
+    },
+    "effect": "Relaxing, euphoric",
+    "flowertime": "60",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.pexels.com/photos/7584339/pexels-photo-7584339.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "id": 6,
+    "title": "GMO Ultra Violet",
+    "breeder": "SaarSeeds",
+    "description": "A potent indica-dominant hybrid with strong garlic and mushroom notes.",
+    "thc": "28%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.50%"
+      },
+      {
+        "name": "Myrcene",
+        "percentage": "0.35%"
+      },
+      {
+        "name": "Limonene",
+        "percentage": "0.20%"
+      }
+    ],
+    "genetics": {
+      "mother": "GMO Cookies",
+      "father": "Ultra Violet OG",
+      "type": "Indica dominant hybrid"
+    },
+    "effect": "Sedating, relaxing",
+    "flowertime": "63",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.pexels.com/photos/7584340/pexels-photo-7584340.jpeg?auto=compress&cs=tinysrgb&w=800"
+  },
+  {
+    "id": 7,
+    "title": "Bruce Banner",
+    "breeder": "SaarSeeds",
+    "description": "A powerful hybrid known for its high THC content and balanced effects.",
+    "thc": "28%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "Myrcene",
+        "percentage": "0.40%"
+      },
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.35%"
+      },
+      {
+        "name": "Limonene",
+        "percentage": "0.30%"
+      }
+    ],
+    "genetics": {
+      "mother": "OG Kush",
+      "father": "Strawberry Diesel",
+      "type": "Balanced hybrid"
+    },
+    "effect": "Powerful, euphoric",
+    "flowertime": "63",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/bruce-banner.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Zkittlez",
+    "breeder": "420 Pharma",
+    "description": "An indica-dominant hybrid known for its fruity flavor profile and relaxing effects.",
+    "thc": "20%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.35%"
+      },
+      {
+        "name": "Limonene",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "Humulene",
+        "percentage": "0.20%"
+      }
+    ],
+    "genetics": {
+      "mother": "Grape Ape",
+      "father": "Grapefruit",
+      "type": "Indica dominant hybrid"
+    },
+    "effect": "Relaxing, happy",
+    "flowertime": "58",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/zkittlez.jpg"
+  },
+  {
+    "id": 9,
+    "title": "White Widow",
+    "breeder": "SaarSeeds",
+    "description": "A legendary balanced hybrid known for its resin production and potent effects.",
+    "thc": "19%",
+    "cbd": "0.2%",
+    "terpenes": [
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.30%"
       },
       {
         "name": "Myrcene",
@@ -17,37 +281,7 @@
       },
       {
         "name": "Limonene",
-        "percentage": "0.15%"
-      }
-    ],
-    "genetics": {
-      "mother": "Northern Lights",
-      "father": "Hindu Kush",
-      "type": "Indica dominant hybrid"
-    },
-    "effect": "Lorem",
-    "flowertime": "63",
-    "imageUrl": "https://www.tomhemps.com/wp-content/uploads/2024/04/mmstrain.jpg"
-  },
-  {
-    "id": 2,
-    "title": "White Widow",
-    "breeder": "Green House Seeds",
-    "description": "This is a description of White Widow",
-    "thc": "18%",
-    "cbd": "0.3%",
-    "terpenes": [
-      {
-        "name": "β-Caryophyllen",
-        "percentage": "0.30%"
-      },
-      {
-        "name": "Pinene",
         "percentage": "0.20%"
-      },
-      {
-        "name": "Terpinolene",
-        "percentage": "0.10%"
       }
     ],
     "genetics": {
@@ -55,37 +289,1034 @@
       "father": "South Indian Indica",
       "type": "Balanced hybrid"
     },
-    "effect": "Ipsum",
-    "flowertime": "58",
-    "imageUrl": "https://shop.greenhouseseeds.nl/images/thumbnails/346/453/detailed/10/WHITE_WIDOW.jpg"
+    "effect": "Balanced, euphoric",
+    "flowertime": "60",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/white-widow.jpg"
   },
   {
-    "id": 1739200700793,
-    "title": "GMO Violet",
-    "breeder": "Saarseeds",
-    "description": "Lorem",
-    "thc": "12",
-    "cbd": "3",
+    "id": 10,
+    "title": "Northern Lights",
+    "breeder": "420 Pharma",
+    "description": "A classic indica strain known for its relaxing and sedating effects.",
+    "thc": "18%",
+    "cbd": "0.1%",
     "terpenes": [
       {
-        "name": "β-Caryophyllen",
+        "name": "Myrcene",
+        "percentage": "0.40%"
+      },
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.25%"
+      },
+      {
+        "name": "Pinene",
+        "percentage": "0.20%"
+      }
+    ],
+    "genetics": {
+      "mother": "Afghani",
+      "father": "Thai",
+      "type": "Indica"
+    },
+    "effect": "Sedating, relaxing",
+    "flowertime": "56",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/northern-lights.jpg"
+  },
+  {
+    "id": 11,
+    "title": "Blueberry",
+    "breeder": "420 Pharma",
+    "description": "A classic indica-dominant hybrid known for its sweet berry aroma and relaxing effects.",
+    "thc": "20%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "Myrcene",
+        "percentage": "0.45%"
+      },
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "Limonene",
+        "percentage": "0.20%"
+      }
+    ],
+    "genetics": {
+      "mother": "Thai",
+      "father": "Purple Thai",
+      "type": "Indica dominant hybrid"
+    },
+    "effect": "Relaxing, euphoric",
+    "flowertime": "55",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/blueberry.jpg"
+  },
+  {
+    "id": 12,
+    "title": "Forbidden Fruit",
+    "breeder": "420 Pharma",
+    "description": "An exotic indica-dominant hybrid with a tropical fruit flavor profile.",
+    "thc": "23%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "Myrcene",
+        "percentage": "0.40%"
+      },
+      {
+        "name": "Limonene",
+        "percentage": "0.35%"
+      },
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "Cherry Pie",
+      "father": "Tangie",
+      "type": "Indica dominant hybrid"
+    },
+    "effect": "Relaxing, euphoric",
+    "flowertime": "63",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/forbidden-fruit.jpg"
+  },
+  {
+    "id": 13,
+    "title": "Tropicanna Cookies",
+    "breeder": "420 Pharma",
+    "description": "A flavorful hybrid combining sweet cookie notes with tropical undertones.",
+    "thc": "24%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "Limonene",
+        "percentage": "0.40%"
+      },
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "Linalool",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "Girl Scout Cookies",
+      "father": "Tangie",
+      "type": "Hybrid"
+    },
+    "effect": "Creative, uplifting",
+    "flowertime": "65",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/tropicanna-cookies.jpg"
+  },
+  {
+    "id": 14,
+    "title": "GMO",
+    "breeder": "420 Pharma",
+    "description": "A potent hybrid known for its unique garlic, mushroom, and onion aroma.",
+    "thc": "25%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.45%"
+      },
+      {
+        "name": "Myrcene",
+        "percentage": "0.35%"
+      },
+      {
+        "name": "Limonene",
+        "percentage": "0.20%"
+      }
+    ],
+    "genetics": {
+      "mother": "Girl Scout Cookies",
+      "father": "Chemdawg",
+      "type": "Indica dominant hybrid"
+    },
+    "effect": "Potent, relaxing",
+    "flowertime": "65",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/gmo.jpg"
+  },
+  {
+    "id": 15,
+    "title": "Green House Cheese",
+    "breeder": "GreenHouse",
+    "description": "A classic UK strain known for its distinctive cheese aroma and relaxing effects.",
+    "thc": "17%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "Myrcene",
+        "percentage": "0.35%"
+      },
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "Limonene",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "Skunk #1",
+      "father": "Afghani",
+      "type": "Indica dominant hybrid"
+    },
+    "effect": "Relaxing, euphoric",
+    "flowertime": "56",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/green-house-cheese.jpg"
+  },
+  {
+    "id": 16,
+    "title": "Super Silver Haze",
+    "breeder": "GreenHouse",
+    "description": "A legendary sativa-dominant strain known for its energetic and creative effects.",
+    "thc": "19%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "Terpinolene",
+        "percentage": "0.35%"
+      },
+      {
+        "name": "Myrcene",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "Limonene",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "Northern Lights",
+      "father": "Haze",
+      "type": "Sativa dominant hybrid"
+    },
+    "effect": "Energetic, creative",
+    "flowertime": "70",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/super-silver-haze.jpg"
+  },
+  {
+    "id": 17,
+    "title": "Brain Cake",
+    "breeder": "Ripper Seeds",
+    "description": "A potent hybrid known for its cerebral effects and sweet flavor profile.",
+    "thc": "24%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "Limonene",
+        "percentage": "0.40%"
+      },
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "Myrcene",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "Brain Damage",
+      "father": "Wedding Cake",
+      "type": "Hybrid"
+    },
+    "effect": "Cerebral, euphoric",
+    "flowertime": "63",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/brain-cake.jpg"
+  },
+  {
+    "id": 18,
+    "title": "Radical Juice",
+    "breeder": "Ripper Seeds",
+    "description": "A flavorful hybrid with a complex terpene profile and balanced effects.",
+    "thc": "22%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "Limonene",
+        "percentage": "0.35%"
+      },
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "Myrcene",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "Jack the Ripper",
+      "father": "Tropicanna Cookies",
+      "type": "Hybrid"
+    },
+    "effect": "Balanced, creative",
+    "flowertime": "65",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/radical-juice.jpg"
+  },
+  {
+    "id": 19,
+    "title": "Black Lemon",
+    "breeder": "Exotic Seed",
+    "description": "An autoflowering strain known for its dark coloration and citrus notes.",
+    "thc": "20%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "Limonene",
+        "percentage": "0.40%"
+      },
+      {
+        "name": "Myrcene",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "Black Domina",
+      "father": "Lemon Haze Auto",
+      "type": "Indica dominant hybrid"
+    },
+    "effect": "Relaxing, uplifting",
+    "flowertime": "70",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/black-lemon.jpg"
+  },
+  {
+    "id": 20,
+    "title": "Hippieberry",
+    "breeder": "Exotic Seed",
+    "description": "A fruity hybrid with old-school genetics and modern potency.",
+    "thc": "21%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "Myrcene",
+        "percentage": "0.35%"
+      },
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "Limonene",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "Blueberry",
+      "father": "Old School Haze",
+      "type": "Hybrid"
+    },
+    "effect": "Euphoric, creative",
+    "flowertime": "63",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/hippieberry.jpg"
+  },
+  {
+    "id": 21,
+    "title": "Auto Power Plant",
+    "breeder": "Dutch Passion",
+    "description": "An autoflowering version of the classic Power Plant strain, known for its quick growth and high yields.",
+    "thc": "15%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "Myrcene",
+        "percentage": "0.35%"
+      },
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "Limonene",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "Power Plant",
+      "father": "Ruderalis",
+      "type": "Autoflower hybrid"
+    },
+    "effect": "Energetic, focused",
+    "flowertime": "75",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/auto-power-plant.jpg"
+  },
+  {
+    "id": 22,
+    "title": "Auto White Widow",
+    "breeder": "Dutch Passion",
+    "description": "An autoflowering version of the legendary White Widow, maintaining the potency of the original.",
+    "thc": "16%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.35%"
+      },
+      {
+        "name": "Myrcene",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "Limonene",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "White Widow",
+      "father": "Ruderalis",
+      "type": "Autoflower hybrid"
+    },
+    "effect": "Balanced, relaxing",
+    "flowertime": "75",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/auto-white-widow.jpg"
+  },
+  {
+    "id": 23,
+    "title": "Big Bud",
+    "breeder": "Sensi Seeds",
+    "description": "A legendary indica strain known for its massive yields and dense buds.",
+    "thc": "16%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "Myrcene",
+        "percentage": "0.40%"
+      },
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "Limonene",
+        "percentage": "0.20%"
+      }
+    ],
+    "genetics": {
+      "mother": "Afghani",
+      "father": "Skunk #1",
+      "type": "Indica dominant"
+    },
+    "effect": "Relaxing, sedating",
+    "flowertime": "50",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/big-bud.jpg"
+  },
+  {
+    "id": 24,
+    "title": "Black Rainbow",
+    "breeder": "Seed Stockers",
+    "description": "A colorful hybrid known for its dark purple hues and rainbow of flavors.",
+    "thc": "22%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "Limonene",
+        "percentage": "0.35%"
+      },
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "Linalool",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "Black Domina",
+      "father": "Zkittlez",
+      "type": "Indica dominant hybrid"
+    },
+    "effect": "Relaxing, euphoric",
+    "flowertime": "63",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/black-rainbow.jpg"
+  },
+  {
+    "id": 25,
+    "title": "Euphoria CBD",
+    "breeder": "Royal Queen Seeds",
+    "description": "A high-CBD strain bred for therapeutic benefits with minimal psychoactive effects.",
+    "thc": "9%",
+    "cbd": "10%",
+    "terpenes": [
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.35%"
+      },
+      {
+        "name": "Myrcene",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "α-Pinene",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "Royal Medic",
+      "father": "Shark Shock CBD",
+      "type": "CBD-rich hybrid"
+    },
+    "effect": "Calming, therapeutic",
+    "flowertime": "63",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/euphoria-cbd.jpg"
+  },
+  {
+    "id": 26,
+    "title": "Critica",
+    "breeder": "Royal Queen Seeds",
+    "description": "A balanced hybrid known for its critical mass of trichomes and robust growth.",
+    "thc": "18%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "Myrcene",
+        "percentage": "0.35%"
+      },
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "Limonene",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "Afghani",
+      "father": "Skunk",
+      "type": "Hybrid"
+    },
+    "effect": "Balanced, relaxing",
+    "flowertime": "56",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/critica.jpg"
+  },
+  {
+    "id": 27,
+    "title": "Gorilla Cookies",
+    "breeder": "Seed Stockers",
+    "description": "A potent hybrid combining the strength of Gorilla Glue with the sweetness of Girl Scout Cookies.",
+    "thc": "25%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.40%"
+      },
+      {
+        "name": "Limonene",
         "percentage": "0.35%"
       },
       {
         "name": "Myrcene",
         "percentage": "0.25%"
-      },
-      {
-        "name": "Limonene",
-        "percentage": "0.15%"
       }
     ],
     "genetics": {
-      "mother": "Northern Lights",
-      "father": "Hindu Kush",
+      "mother": "Gorilla Glue",
+      "father": "Girl Scout Cookies",
+      "type": "Hybrid"
+    },
+    "effect": "Potent, euphoric",
+    "flowertime": "63",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/gorilla-cookies.jpg"
+  },
+  {
+    "id": 28,
+    "title": "Mango Pepper",
+    "breeder": "French Touch Seeds",
+    "description": "A unique hybrid combining sweet mango notes with spicy pepper undertones.",
+    "thc": "20%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "Myrcene",
+        "percentage": "0.45%"
+      },
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.35%"
+      },
+      {
+        "name": "Limonene",
+        "percentage": "0.20%"
+      }
+    ],
+    "genetics": {
+      "mother": "Mango Haze",
+      "father": "Black Pepper",
+      "type": "Hybrid"
+    },
+    "effect": "Creative, uplifting",
+    "flowertime": "65",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/mango-pepper.jpg"
+  },
+  {
+    "id": 29,
+    "title": "Mimosa x Orange Punch",
+    "breeder": "Barneys Farm",
+    "description": "A citrus-forward hybrid combining the best traits of Mimosa and Orange Punch.",
+    "thc": "23%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "Limonene",
+        "percentage": "0.45%"
+      },
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "Myrcene",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "Mimosa",
+      "father": "Orange Punch",
+      "type": "Hybrid"
+    },
+    "effect": "Energetic, euphoric",
+    "flowertime": "63",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/mimosa-x-orange-punch.jpg"
+  },
+  {
+    "id": 30,
+    "title": "Monster Mash",
+    "breeder": "Exotic Seeds",
+    "description": "A powerful hybrid known for its monster yields and potent effects.",
+    "thc": "24%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "Myrcene",
+        "percentage": "0.40%"
+      },
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.35%"
+      },
+      {
+        "name": "Limonene",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "Monster Cookies",
+      "father": "Purple Punch",
+      "type": "Hybrid"
+    },
+    "effect": "Potent, relaxing",
+    "flowertime": "63",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/monster-mash.jpg"
+  },
+  {
+    "id": 31,
+    "title": "OG Kush",
+    "breeder": "Barneys Farm",
+    "description": "A legendary strain known for its complex aroma and potent effects.",
+    "thc": "24%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.40%"
+      },
+      {
+        "name": "Limonene",
+        "percentage": "0.35%"
+      },
+      {
+        "name": "Myrcene",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "Hindu Kush",
+      "father": "Unknown",
+      "type": "Hybrid"
+    },
+    "effect": "Relaxing, euphoric",
+    "flowertime": "58",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/og-kush.jpg"
+  },
+  {
+    "id": 32,
+    "title": "Orange Bud",
+    "breeder": "Dutch Passion",
+    "description": "A classic strain known for its distinct orange aroma and uplifting effects.",
+    "thc": "18%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "Limonene",
+        "percentage": "0.45%"
+      },
+      {
+        "name": "Myrcene",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "Skunk",
+      "father": "Unknown",
+      "type": "Hybrid"
+    },
+    "effect": "Uplifting, creative",
+    "flowertime": "56",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/orange-bud.jpg"
+  },
+  {
+    "id": 33,
+    "title": "Original Afghani #1",
+    "breeder": "Seedsman",
+    "description": "A pure indica landrace strain known for its resin production and relaxing effects.",
+    "thc": "17%",
+    "cbd": "0.2%",
+    "terpenes": [
+      {
+        "name": "Myrcene",
+        "percentage": "0.40%"
+      },
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "Limonene",
+        "percentage": "0.20%"
+      }
+    ],
+    "genetics": {
+      "mother": "Afghani Landrace",
+      "father": "Afghani Landrace",
+      "type": "Pure Indica"
+    },
+    "effect": "Sedating, relaxing",
+    "flowertime": "45",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/original-afghani-1.jpg"
+  },
+  {
+    "id": 34,
+    "title": "Power Plant",
+    "breeder": "Dutch Passion",
+    "description": "A potent sativa-dominant strain known for its energetic effects and quick flowering.",
+    "thc": "20%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.35%"
+      },
+      {
+        "name": "Limonene",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "Myrcene",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "African Sativa",
+      "father": "Unknown",
+      "type": "Sativa dominant"
+    },
+    "effect": "Energetic, focused",
+    "flowertime": "56",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/power-plant.jpg"
+  },
+  {
+    "id": 35,
+    "title": "Purple Lemonade",
+    "breeder": "Fast Buds",
+    "description": "An autoflowering strain known for its purple coloration and citrus flavor.",
+    "thc": "22%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "Limonene",
+        "percentage": "0.45%"
+      },
+      {
+        "name": "Myrcene",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "Citrus",
+      "father": "Purple Punch Auto",
+      "type": "Autoflower hybrid"
+    },
+    "effect": "Relaxing, uplifting",
+    "flowertime": "70",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/purple-lemonade.jpg"
+  },
+  {
+    "id": 36,
+    "title": "Purple Shot",
+    "breeder": "Exotic Seeds",
+    "description": "A colorful hybrid known for its quick flowering time and grape-like aroma.",
+    "thc": "21%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "Myrcene",
+        "percentage": "0.40%"
+      },
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "Limonene",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "Purple Kush",
+      "father": "Critical",
       "type": "Indica dominant hybrid"
     },
-    "effect": "Euphorisch",
-    "imageUrl": "https://saarseeds.de/media/image/product/6/lg/ultra-violet-gmo-5er-pack-indica-saarseeds.jpg"
+    "effect": "Relaxing, euphoric",
+    "flowertime": "55",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/purple-shot.jpg"
+  },
+  {
+    "id": 37,
+    "title": "Royal Medic CBD",
+    "breeder": "Royal Queen Seeds",
+    "description": "A medicinal strain with balanced THC:CBD ratio for therapeutic benefits.",
+    "thc": "10%",
+    "cbd": "10%",
+    "terpenes": [
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.35%"
+      },
+      {
+        "name": "Myrcene",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "α-Pinene",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "Juanita la Lagrimosa",
+      "father": "Critical",
+      "type": "CBD-rich hybrid"
+    },
+    "effect": "Therapeutic, balanced",
+    "flowertime": "60",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/royal-medic-cbd.jpg"
+  },
+  {
+    "id": 38,
+    "title": "Skunk #1",
+    "breeder": "Sensi Seeds",
+    "description": "The original hybrid that revolutionized cannabis breeding worldwide.",
+    "thc": "17%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "Myrcene",
+        "percentage": "0.35%"
+      },
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "Limonene",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "Colombian Gold",
+      "father": "Afghani",
+      "type": "Hybrid"
+    },
+    "effect": "Relaxing, euphoric",
+    "flowertime": "45",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/skunk-1.jpg"
+  },
+  {
+    "id": 39,
+    "title": "Stress Killer CBD",
+    "breeder": "Royal Queen Seeds",
+    "description": "A CBD-rich autoflowering strain designed for stress relief.",
+    "thc": "11%",
+    "cbd": "11%",
+    "terpenes": [
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.35%"
+      },
+      {
+        "name": "Myrcene",
+        "percentage": "0.30%"
+      },
+      {
+        "name": "Limonene",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "Lemon Haze",
+      "father": "Juanita la Lagrimosa Auto",
+      "type": "CBD-rich autoflower"
+    },
+    "effect": "Calming, therapeutic",
+    "flowertime": "70",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/stress-killer-cbd.jpg"
+  },
+  {
+    "id": 40,
+    "title": "Triple A",
+    "breeder": "Exotic Seeds",
+    "description": "A premium hybrid known for its top-shelf quality and complex effects.",
+    "thc": "23%",
+    "cbd": "0.1%",
+    "terpenes": [
+      {
+        "name": "Limonene",
+        "percentage": "0.40%"
+      },
+      {
+        "name": "β-Caryophyllene",
+        "percentage": "0.35%"
+      },
+      {
+        "name": "Myrcene",
+        "percentage": "0.25%"
+      }
+    ],
+    "genetics": {
+      "mother": "Triple OG",
+      "father": "Gelato",
+      "type": "Hybrid"
+    },
+    "effect": "Potent, balanced",
+    "flowertime": "63",
+    "seedlist": {
+      "seedcount": null
+    },
+    "imageUrl": "https://images.leafly.com/flower-images/triple-a.jpg"
   }
 ]
