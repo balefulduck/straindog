@@ -1,8 +1,8 @@
 "use client";
 import { useState } from 'react';
 import Image from 'next/image';
-import ProductShowcase from '../components/ProductShowcase';
 import SeedListEditor from '../components/SeedListEditor';
+import StrainPreview from '../components/StrainPreview';
 
 const categories = [
   { id: 'high-cbd', label: 'High CBD', color: '#EAB404' },
@@ -41,7 +41,7 @@ export default function LandingPage() {
         </div>
         <button
           onClick={() => setIsEditorOpen(true)}
-          className="transition-colors"
+          className="p-2 rounded-full transition-colors"
           style={{ backgroundColor: 'rgba(0, 102, 102, 0.5)' }}
         >
           <svg 
@@ -96,10 +96,10 @@ export default function LandingPage() {
           </div>
         </div>
 
-        {/* Right Side - Search and Showcase */}
+        {/* Right Side - Search and Preview */}
         <div className="w-full md:w-1/2 flex flex-col bg-white">
           {/* Search Section */}
-          <div className="p-6 border-b">
+          <div className="p-6 border-b border-gray-200">
             <div className="max-w-md mx-auto">
               <label 
                 htmlFor="search" 
@@ -119,19 +119,15 @@ export default function LandingPage() {
                   backgroundColor: 'rgba(0, 102, 102, 0.5)',
                   border: '2px solid rgba(0, 102, 102, 0.8)'
                 }}
-                placeholder="Suche nach Strain oder Breeder..."
+                placeholder="Suche nach Strain, Breeder..."
               />
             </div>
           </div>
 
-          {/* Minimized ProductShowcase */}
-          <div className="flex-1 overflow-auto">
-            <div className="p-6">
-              <ProductShowcase 
-                minimal={true}
-                searchQuery={searchQuery}
-                selectedCategories={selectedCategories}
-              />
+          {/* Strain Preview */}
+          <div className="flex-1 overflow-auto bg-gray-50">
+            <div className="p-4">
+              <StrainPreview searchQuery={searchQuery} />
             </div>
           </div>
         </div>
