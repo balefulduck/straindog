@@ -1,5 +1,6 @@
 "use client";
 import { useState } from 'react';
+import Image from 'next/image';
 import ProductShowcase from '../components/ProductShowcase';
 import SeedListEditor from '../components/SeedListEditor';
 
@@ -21,16 +22,41 @@ export default function LandingPage() {
     <div className="min-h-screen bg-white">
       {/* Floating Header */}
       <header 
-        className="fixed top-0 left-0 right-0 h-[5vh] bg-[#8E0365] shadow-lg z-50 
+        className="fixed top-0 left-0 right-0 h-[5vh] shadow-lg z-50 
                    flex items-center justify-between px-6"
+        style={{
+          background: 'linear-gradient(90deg, #8E0365 0%, #E77B05 50%, #1FC55F 100%)'
+        }}
       >
-        <h1 className="text-white text-xl font-bold">Dr. Cannabis</h1>
+        <div className="flex items-center gap-2">
+          <Image
+            src="/images/logo.png"
+            alt="Logo"
+            width={24}
+            height={24}
+            className="object-contain"
+          />
+          <h1 className="text-white text-xl font-bold">Dr. Cannabis</h1>
+          <span className="text-white text-xl font-bold">Samen</span>
+        </div>
         <button
           onClick={() => setIsEditorOpen(true)}
-          className="px-4 py-1 bg-white text-[#8E0365] rounded-full text-sm 
-                     hover:bg-opacity-90 transition-colors"
+          className="transition-colors"
+          style={{ backgroundColor: 'rgba(0, 102, 102, 0.5)' }}
         >
-          Edit Seeds
+          <svg 
+            className="w-6 h-6 text-white" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor"
+          >
+            <path 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              strokeWidth={2} 
+              d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" 
+            />
+          </svg>
         </button>
       </header>
 
@@ -50,9 +76,12 @@ export default function LandingPage() {
                 className={`w-full p-4 rounded-lg transition-all flex items-center justify-between
                           ${selectedCategories.includes(category.id)
                             ? 'bg-[#8E0365] text-white shadow-inner'
-                            : 'bg-white hover:bg-opacity-90 text-[#8E0365] shadow-md'
+                            : 'shadow-md hover:bg-opacity-90 text-[#8E0365]'
                           }`}
                 style={{
+                  backgroundColor: selectedCategories.includes(category.id) 
+                    ? '#8E0365'
+                    : 'rgba(33, 178, 199, 0.5)',
                   borderLeft: `6px solid ${category.color}`
                 }}
               >
@@ -83,8 +112,13 @@ export default function LandingPage() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full p-3 border-2 border-[#8E0365] rounded-lg focus:ring-2 
-                         focus:ring-[#8E0365] focus:border-[#8E0365] outline-none"
+                className="w-full p-3 rounded-lg focus:ring-2 
+                         focus:ring-[#8E0365] focus:border-[#8E0365] outline-none
+                         text-white placeholder-white placeholder-opacity-70"
+                style={{ 
+                  backgroundColor: 'rgba(0, 102, 102, 0.5)',
+                  border: '2px solid rgba(0, 102, 102, 0.8)'
+                }}
                 placeholder="Suche nach Strain oder Breeder..."
               />
             </div>
