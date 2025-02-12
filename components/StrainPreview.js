@@ -33,6 +33,8 @@ const StrainPreview = ({ searchQuery }) => {
       const filtered = strains.filter(strain => 
         strain.title.toLowerCase().includes(query) ||
         strain.breeder.toLowerCase().includes(query) ||
+        strain.effect.toLowerCase().includes(query) ||
+        strain.genetics.type.toLowerCase().includes(query) ||
         strain.description.toLowerCase().includes(query)
       );
       setStrains(filtered);

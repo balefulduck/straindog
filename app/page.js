@@ -40,14 +40,7 @@ export default function LandingPage() {
                 />
               </div>
               
-              {/* Alle Sorten Button */}
-              <button
-                onClick={() => router.push('/grid')}
-                className="text-sm px-4 py-2 rounded-full bg-[#8E0365] text-white hover:bg-opacity-90 transition-colors shadow-sm"
-              >
-                Alle Sorten
-              </button>
-
+       
               {/* Categories */}
               <div className="flex flex-wrap justify-center gap-2">
                 {categories.map((category) => (
@@ -75,6 +68,16 @@ export default function LandingPage() {
                   </button>
                 ))}
               </div>
+
+                     {/* Alle Sorten Button */}
+                     <button
+                onClick={() => router.push('/grid')}
+                className="text-sm px-4 py-2 rounded-full bg-[#8E0365] text-white hover:bg-opacity-90 transition-colors shadow-sm"
+              >
+                Alle Sorten
+              </button>
+
+
             </div>
           </div>
         </div>
