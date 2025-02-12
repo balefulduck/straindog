@@ -103,7 +103,9 @@ const PDFCreator = ({ strains }) => {
           doc.text('Terpenprofil:', 20, currentY);
           doc.setFontSize(12);
           strain.terpenes.forEach((terpene, idx) => {
-            doc.text(`${terpene.name}: ${terpene.percentage}`, 30, currentY + 10 + (idx * 7));
+            // Normalize β-Caryophyllene to use regular "Beta"
+            const terpeneName = terpene.name.replace('β-', 'Beta-');
+            doc.text(`${terpeneName}: ${terpene.percentage}`, 30, currentY + 10 + (idx * 7));
           });
           currentY += 10 + (strain.terpenes.length * 7) + 10; // Add spacing after terpenes
         }
