@@ -73,11 +73,7 @@ const ProductShowcase = () => {
                     <p className="text-gray-700">{currentStrain.description}</p>
                   </div>
                   
-                  {/* Grow Section */}
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <h3 className="font-semibold text-lg mb-2">Grow</h3>
-                    <p className="text-gray-700">{currentStrain.flowertime} Tage</p>
-                  </div>
+                
                 </div>
               </div>
 
@@ -92,11 +88,7 @@ const ProductShowcase = () => {
                 </div>
 
                 <div className="grid grid-cols-1 gap-6">
-                  {/* Wirkung Section */}
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <h3 className="font-semibold text-lg mb-2">Wirkung</h3>
-                    <p className="text-gray-700">{currentStrain.effect}</p>
-                  </div>
+
 
                   {/* Wirkstoffe Section */}
                   <div className="bg-gray-50 p-4 rounded-lg">
@@ -114,7 +106,7 @@ const ProductShowcase = () => {
                       </div>
                       
                       <div>
-                        <p className="font-medium mb-2">Terpene Profile</p>
+                        <p className="font-medium mb-2">Terpenrofil</p>
                         <div className="space-y-2">
                           {currentStrain.terpenes?.map((terpene, index) => (
                             <div key={index} className="flex justify-between items-center text-sm">
@@ -129,19 +121,19 @@ const ProductShowcase = () => {
 
                   {/* Genetics Section */}
                   <div className="bg-gray-50 p-4 rounded-lg mt-6">
-                    <h3 className="font-semibold text-lg mb-2">Genetics</h3>
+                    <h3 className="font-semibold text-lg mb-2">Genetik</h3>
                     <div className="space-y-2">
                       <div>
-                        <p className="font-medium">Type</p>
+                        <p className="font-medium">Typ</p>
                         <p className="text-gray-700">{currentStrain.genetics?.type}</p>
                       </div>
                       <div className="grid grid-cols-2 gap-4">
                         <div>
-                          <p className="font-medium">Mother</p>
+                          <p className="font-medium">♀</p>
                           <p className="text-gray-700">{currentStrain.genetics?.mother}</p>
                         </div>
                         <div>
-                          <p className="font-medium">Father</p>
+                          <p className="font-medium">♂</p>
                           <p className="text-gray-700">{currentStrain.genetics?.father}</p>
                         </div>
                       </div>
