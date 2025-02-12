@@ -1,12 +1,12 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSwipeable } from "react-swipeable";
 import { useSearchParams } from 'next/navigation';
 import SeedListEditor from "./SeedListEditor";
 import Header from "./Header";
 import Image from 'next/image';
 
-const ProductShowcase = () => {
+const ProductShowcaseContent = () => {
   const searchParams = useSearchParams();
   const [currentStrain, setCurrentStrain] = useState(null);
   const [seedList, setSeedList] = useState([]);
@@ -199,6 +199,14 @@ const ProductShowcase = () => {
         onUpdateSeedList={setSeedList}
       />
     </div>
+  );
+};
+
+const ProductShowcase = () => {
+  return (
+    <Suspense fallback={<div className="text-center p-4">Loading...</div>}>
+      <ProductShowcaseContent />
+    </Suspense>
   );
 };
 
