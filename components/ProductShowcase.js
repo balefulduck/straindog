@@ -11,7 +11,8 @@ const ProductShowcaseContent = () => {
   const [currentStrain, setCurrentStrain] = useState(null);
   const [seedList, setSeedList] = useState([]);
   const [isEditorOpen, setIsEditorOpen] = useState(false);
-  const [showEditButton, setShowEditButton] = useState(false);
+  const [showPasswordPrompt, setShowPasswordPrompt] = useState(false);
+  const [passwordInput, setPasswordInput] = useState('');
 
   useEffect(() => {
     const strainId = searchParams.get('id');
@@ -38,33 +39,19 @@ const ProductShowcaseContent = () => {
       .catch(error => console.error('Error loading seeds:', error));
   }, [searchParams]);
 
-  // Handle keypress events for the password
-  useEffect(() => {
-    let buffer = '';
-    let timeoutId;
+  const handlePasswordSubmit = () => {
+    if (passwordInput.toLowerCase() === 'drc') {
+      setIsEditorOpen(true);
+      setShowPasswordPrompt(false);
+      setPasswordInput('');
+    } else {
+      setPasswordInput('');
+    }
+  };
 
-    const handleKeyPress = (e) => {
-      buffer += e.key;
-      
-      // Reset buffer after 1 second of no input
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
-        buffer = '';
-      }, 1000);
-
-      // Check if buffer contains the password
-      if (buffer.toLowerCase().includes('drc')) {
-        setShowEditButton(true);
-        buffer = '';
-      }
-    };
-
-    window.addEventListener('keypress', handleKeyPress);
-    return () => {
-      window.removeEventListener('keypress', handleKeyPress);
-      clearTimeout(timeoutId);
-    };
-  }, []);
+  const handleEditClick = () => {
+    setShowPasswordPrompt(true);
+  };
 
   const handlers = useSwipeable({
     onSwipedLeft: () => {
@@ -171,33 +158,64 @@ const ProductShowcaseContent = () => {
         </div>
       </main>
 
-      {/* Footer with Seed List Editor Button */}
+      {/* Footer with Edit Button */}
       <div className="border-t border-gray-100 pt-8 pb-16 mt-auto">
-        <div className="flex justify-center">
-          {showEditButton ? (
-            <button
-              onClick={() => setIsEditorOpen(true)}
-              className="inline-flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-              </svg>
-              Samenliste bearbeiten
-            </button>
-          ) : (
-            <div className="text-sm text-gray-400">
-              Gib den Code ein, um die Bearbeitungsfunktion freizuschalten
-            </div>
-          )}
+        <div className="flex flex-col items-center">
+          <button
+            onClick={handleEditClick}
+            className="inline-flex items-center gap-2 px-4 py-2 text-sm text-gray-600 hover:text-gray-900 transition-colors rounded-md border border-gray-300 hover:border-gray-400"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+            </svg>
+            Edit Strain List
+          </button>
         </div>
       </div>
 
-      <SeedListEditor
-        isOpen={isEditorOpen}
-        onClose={() => setIsEditorOpen(false)}
-        seedList={seedList}
-        onUpdateSeedList={setSeedList}
-      />
+      {/* Password Prompt Modal */}
+      {showPasswordPrompt && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full mx-4">
+            <h3 className="text-lg font-semibold mb-4">Admin Access</h3>
+            <input
+              type="password"
+              value={passwordInput}
+              onChange={(e) => setPasswordInput(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && handlePasswordSubmit()}
+              placeholder="Enter password"
+              className="w-full px-3 py-2 border rounded-md mb-4"
+              autoFocus
+            />
+            <div className="flex justify-end gap-2">
+              <button
+                onClick={() => {
+                  setShowPasswordPrompt(false);
+                  setPasswordInput('');
+                }}
+                className="px-4 py-2 text-gray-600 hover:text-gray-900"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handlePasswordSubmit}
+                className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isEditorOpen && (
+        <SeedListEditor
+          isOpen={isEditorOpen}
+          onClose={() => setIsEditorOpen(false)}
+          seedList={seedList}
+          onUpdateSeedList={setSeedList}
+        />
+      )}
     </div>
   );
 };
