@@ -7,6 +7,7 @@ import Header from "./Header";
 const StrainGrid = () => {
   const [strains, setStrains] = useState([]);
   const router = useRouter();
+  const [showPdfButton, setShowPdfButton] = useState(false);
 
   useEffect(() => {
     fetch('/api/seeds')
@@ -18,6 +19,34 @@ const StrainGrid = () => {
   const handleStrainClick = (strainId) => {
     router.push(`/showcase?id=${strainId}`);
   };
+
+  // Handle keypress events for the password
+  useEffect(() => {
+    let buffer = '';
+    let timeoutId;
+
+    const handleKeyPress = (e) => {
+      buffer += e.key;
+      
+      // Reset buffer after 1 second of no input
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        buffer = '';
+      }, 1000);
+
+      // Check if buffer contains the password
+      if (buffer.toLowerCase().includes('drc')) {
+        setShowPdfButton(true);
+        buffer = '';
+      }
+    };
+
+    window.addEventListener('keypress', handleKeyPress);
+    return () => {
+      window.removeEventListener('keypress', handleKeyPress);
+      clearTimeout(timeoutId);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">
@@ -62,7 +91,13 @@ const StrainGrid = () => {
           {/* Footer with subtle PDF download */}
           <div className="border-t border-gray-100 pt-8 pb-16 mt-auto">
             <div className="flex justify-center">
-              <PDFCreator strains={strains} />
+              {showPdfButton ? (
+                <PDFCreator strains={strains} />
+              ) : (
+                <div className="text-sm text-gray-400">
+                  Gib den Code ein, um die PDF-Funktion freizuschalten
+                </div>
+              )}
             </div>
           </div>
         </div>
