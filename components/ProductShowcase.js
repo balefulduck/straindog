@@ -1,125 +1,79 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
+import { useSearchParams } from 'next/navigation';
 import PDFCreator from "../modules/PDFCreator";
 import SeedListEditor from "./SeedListEditor";
 
 const ProductShowcase = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const searchParams = useSearchParams();
+  const [currentStrain, setCurrentStrain] = useState(null);
   const [seedList, setSeedList] = useState([]);
   const [isEditorOpen, setIsEditorOpen] = useState(false);
 
   useEffect(() => {
-    // Load seeds from the API on component mount
+    const strainId = searchParams.get('id');
+    
+    // Load seeds from the API
     fetch('/api/seeds')
       .then(res => res.json())
       .then(data => {
-        // If no seeds are saved yet, use the default ones
-        if (data.length === 0) {
-          const defaultSeeds = [
-            {
-              id: 1,
-              title: "Mylar Magic",
-              breeder: "Nine Weeks Harvest",
-              description: "This is a description of Mylar Magic",
-              thc: "22%",
-              cbd: "0.51%",
-              terpenes: [
-                { name: "β-Caryophyllene", percentage: "30%" },
-                { name: "Limonene", percentage: "20%" },
-                { name: "Pinene", percentage: "15%" },
-              ],
-              genetics: {
-                type: "Hybrid",
-                mother: "Northern Lights",
-                father: "Skunk #1",
-              },
-              effect: "",
-              imageUrl: "https://www.tomhemps.com/wp-content/uploads/2024/04/mmstrain.jpg",
-            },
-            {
-              id: 2,
-              title: "White Widow",
-              description: "This is a description of White Widow",
-              thc: "18%",
-              cbd: "0.3%",
-              terpenes: [
-                { name: "β-Caryophyllene", percentage: "25%" },
-                { name: "Myrcene", percentage: "20%" },
-                { name: "Pinene", percentage: "15%" },
-              ],
-              genetics: {
-                type: "Hybrid",
-                mother: "Brazilian Sativa",
-                father: "South Indian Indica",
-              },
-              effect: "",
-              imageUrl: "https://shop.greenhouseseeds.nl/images/thumbnails/346/453/detailed/10/WHITE_WIDOW.jpg"
-            },
-          ];
-          setSeedList(defaultSeeds);
-          // Save default seeds to the API
-          fetch('/api/seeds', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(defaultSeeds),
-          });
+        setSeedList(data);
+        
+        // Find the strain with the matching ID
+        if (strainId) {
+          const strain = data.find(s => s.id.toString() === strainId.toString());
+          if (strain) {
+            setCurrentStrain(strain);
+          } else {
+            console.error(`Strain with ID ${strainId} not found`);
+            setCurrentStrain(data[0]); // Fallback to first strain if ID not found
+          }
         } else {
-          setSeedList(data);
+          setCurrentStrain(data[0]); // Default to first strain if no ID provided
         }
       })
       .catch(error => console.error('Error loading seeds:', error));
-  }, []);
+  }, [searchParams]);
 
   const handlers = useSwipeable({
     onSwipedLeft: () => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === seedList.length - 1 ? 0 : prevIndex + 1
-      );
+      const currentIndex = seedList.findIndex(s => s.id === currentStrain.id);
+      const nextIndex = (currentIndex + 1) % seedList.length;
+      setCurrentStrain(seedList[nextIndex]);
     },
     onSwipedRight: () => {
-      setCurrentIndex((prevIndex) =>
-        prevIndex === 0 ? seedList.length - 1 : prevIndex - 1
-      );
+      const currentIndex = seedList.findIndex(s => s.id === currentStrain.id);
+      const prevIndex = currentIndex === 0 ? seedList.length - 1 : currentIndex - 1;
+      setCurrentStrain(seedList[prevIndex]);
     },
   });
 
-  const handleUpdateSeedList = (updatedSeeds) => {
-    setSeedList(updatedSeeds);
-    if (currentIndex >= updatedSeeds.length) {
-      setCurrentIndex(Math.max(0, updatedSeeds.length - 1));
-    }
-  };
-
-  if (seedList.length === 0) {
-    return <div>No data</div>;
+  if (!currentStrain) {
+    return <div className="text-center p-4">Loading...</div>;
   }
 
-  const currentSeed = seedList[currentIndex];
-
   return (
-    <div {...handlers} className="min-h-screen bg-gray-100 p-8">
+    <div {...handlers} className="min-h-screen bg-white p-4">
       <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
         <div className="p-8">
           <div className="flex flex-col md:flex-row gap-8">
             {/* Left side: Title, Subtitle, and Content */}
             <div className="flex-1">
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">{currentSeed.title}</h1>
-              <h2 className="text-xl text-gray-600 mb-6">{currentSeed.breeder}</h2>
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">{currentStrain.title}</h1>
+              <h2 className="text-xl text-gray-600 mb-6">{currentStrain.breeder}</h2>
               
               <div className="grid grid-cols-1 gap-6">
                 {/* Kurzgesagt Section */}
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <h3 className="font-semibold text-lg mb-2">Kurzgesagt</h3>
-                  <p className="text-gray-700">{currentSeed.description}</p>
+                  <p className="text-gray-700">{currentStrain.description}</p>
                 </div>
                 
                 {/* Grow Section */}
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <h3 className="font-semibold text-lg mb-2">Grow</h3>
-                  <p className="text-gray-700">{currentSeed.flowertime} Tage</p>
+                  <p className="text-gray-700">{currentStrain.flowertime} Tage</p>
                 </div>
               </div>
             </div>
@@ -128,8 +82,8 @@ const ProductShowcase = () => {
             <div className="flex-1">
               <div className="relative h-64 mb-6 rounded-lg overflow-hidden">
                 <img
-                  src={currentSeed.imageUrl}
-                  alt={currentSeed.title}
+                  src={currentStrain.imageUrl}
+                  alt={currentStrain.title}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -138,7 +92,7 @@ const ProductShowcase = () => {
                 {/* Wirkung Section */}
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <h3 className="font-semibold text-lg mb-2">Wirkung</h3>
-                  <p className="text-gray-700">{currentSeed.effect}</p>
+                  <p className="text-gray-700">{currentStrain.effect}</p>
                 </div>
 
                 {/* Wirkstoffe Section */}
@@ -148,18 +102,18 @@ const ProductShowcase = () => {
                     <div className="grid grid-cols-2 gap-4">
                       <div>
                         <p className="font-medium">THC</p>
-                        <p className="text-gray-700">{currentSeed.thc}</p>
+                        <p className="text-gray-700">{currentStrain.thc}</p>
                       </div>
                       <div>
                         <p className="font-medium">CBD</p>
-                        <p className="text-gray-700">{currentSeed.cbd}</p>
+                        <p className="text-gray-700">{currentStrain.cbd}</p>
                       </div>
                     </div>
                     
                     <div>
                       <p className="font-medium mb-2">Terpene Profile</p>
                       <div className="space-y-2">
-                        {currentSeed.terpenes.map((terpene, index) => (
+                        {currentStrain.terpenes?.map((terpene, index) => (
                           <div key={index} className="flex justify-between items-center text-sm">
                             <span className="text-gray-700">{terpene.name}</span>
                             <span className="text-gray-500">{terpene.percentage}</span>
@@ -176,16 +130,16 @@ const ProductShowcase = () => {
                   <div className="space-y-2">
                     <div>
                       <p className="font-medium">Type</p>
-                      <p className="text-gray-700">{currentSeed.genetics.type}</p>
+                      <p className="text-gray-700">{currentStrain.genetics?.type}</p>
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
                         <p className="font-medium">Mother</p>
-                        <p className="text-gray-700">{currentSeed.genetics.mother}</p>
+                        <p className="text-gray-700">{currentStrain.genetics?.mother}</p>
                       </div>
                       <div>
                         <p className="font-medium">Father</p>
-                        <p className="text-gray-700">{currentSeed.genetics.father}</p>
+                        <p className="text-gray-700">{currentStrain.genetics?.father}</p>
                       </div>
                     </div>
                   </div>
@@ -222,10 +176,10 @@ const ProductShowcase = () => {
         isOpen={isEditorOpen}
         onClose={() => setIsEditorOpen(false)}
         seedList={seedList}
-        onUpdateSeedList={handleUpdateSeedList}
+        onUpdateSeedList={setSeedList}
       />
 
-      <PDFCreator currentSeed={currentSeed} />
+      <PDFCreator currentSeed={currentStrain} />
     </div>
   );
 };
