@@ -10,7 +10,6 @@ const categories = [
   { id: 'high-thc', label: 'High THC', color: '#E77B05' },
   { id: 'pain', label: 'Schmerzen', color: '#1FC55F' },
   { id: 'sleep', label: 'Schlafen', color: '#EAB404' },
-  { id: 'relax', label: 'Entspannung', color: '#1FC55F' },
   { id: 'energy', label: 'Anregung', color: '#E77B05' }
 ];
 
@@ -40,7 +39,6 @@ export default function LandingPage() {
                 />
               </div>
               
-       
               {/* Categories */}
               <div className="flex flex-wrap justify-center gap-2">
                 {categories.map((category) => (
@@ -69,22 +67,20 @@ export default function LandingPage() {
                 ))}
               </div>
 
-                     {/* Alle Sorten Button */}
-                     <button
+              {/* Alle Sorten Button */}
+              <button
                 onClick={() => router.push('/grid')}
                 className="text-sm px-4 py-2 rounded-full bg-[#8E0365] text-white hover:bg-opacity-90 transition-colors shadow-sm"
               >
                 Alle Sorten
               </button>
-
-
             </div>
           </div>
         </div>
 
         {/* Strain Preview */}
         <div className="max-w-7xl mx-auto px-4 py-8">
-          <StrainPreview searchQuery={searchQuery} />
+          <StrainPreview searchQuery={searchQuery} selectedCategories={selectedCategories} />
         </div>
       </main>
 

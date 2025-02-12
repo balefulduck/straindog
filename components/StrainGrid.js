@@ -7,6 +7,7 @@ import Header from "./Header";
 const StrainGrid = () => {
   const [strains, setStrains] = useState([]);
   const router = useRouter();
+  const [showPdfButton, setShowPdfButton] = useState(false);
 
   useEffect(() => {
     fetch('/api/seeds')
@@ -19,18 +20,43 @@ const StrainGrid = () => {
     router.push(`/showcase?id=${strainId}`);
   };
 
+  // Handle keypress events for the password
+  useEffect(() => {
+    let buffer = '';
+    let timeoutId;
+
+    const handleKeyPress = (e) => {
+      buffer += e.key;
+      
+      // Reset buffer after 1 second of no input
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        buffer = '';
+      }, 1000);
+
+      // Check if buffer contains the password
+      if (buffer.toLowerCase().includes('drc')) {
+        setShowPdfButton(true);
+        buffer = '';
+      }
+    };
+
+    window.addEventListener('keypress', handleKeyPress);
+    return () => {
+      window.removeEventListener('keypress', handleKeyPress);
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
       
       <main className="pt-[5vh] p-4">
         <div className="max-w-7xl mx-auto">
-          <div className="flex justify-between items-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-900">Alle Sorten</h1>
-            <PDFCreator strains={strains} />
-          </div>
+         
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-16">
             {strains.map((strain) => (
               <div
                 key={strain.id}
@@ -60,6 +86,19 @@ const StrainGrid = () => {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Footer with subtle PDF download */}
+          <div className="border-t border-gray-100 pt-8 pb-16 mt-auto">
+            <div className="flex justify-center">
+              {showPdfButton ? (
+                <PDFCreator strains={strains} />
+              ) : (
+                <div className="text-sm text-gray-400">
+                  Gib den Code ein, um die PDF-Funktion freizuschalten
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </main>

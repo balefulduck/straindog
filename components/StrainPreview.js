@@ -1,189 +1,176 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-const StrainPreview = ({ searchQuery }) => {
+const StrainPreview = ({ searchQuery, selectedCategories }) => {
   const router = useRouter();
   const [strains, setStrains] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [randomStrain, setRandomStrain] = useState(null);
-  const [isSearching, setIsSearching] = useState(false);
+  const [displayedStrains, setDisplayedStrains] = useState([]);
+  const [allStrains, setAllStrains] = useState([]);
+  const [page, setPage] = useState(1);
+  const [isSearchMode, setIsSearchMode] = useState(false);
+  const strainsPerPage = 3;
 
-  // Load strains and set initial random strain
+  // Load strains and set initial random strains
   useEffect(() => {
     fetch('/api/seeds')
       .then(res => res.json())
       .then(data => {
+        setAllStrains(data);
         setStrains(data);
         if (data.length > 0) {
-          const randomIndex = Math.floor(Math.random() * data.length);
-          setRandomStrain(data[randomIndex]);
+          const randomStrains = getRandomStrains(data, strainsPerPage);
+          setDisplayedStrains(randomStrains);
         }
       })
       .catch(error => console.error('Error loading seeds:', error));
   }, []);
 
-  // Handle search
+  const getRandomStrains = (strainList, count) => {
+    const shuffled = [...strainList].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+  };
+
+  const filterStrainsByCategories = (strainList, categories) => {
+    if (!categories.length) return strainList;
+    return strainList.filter(strain => 
+      categories.some(category => strain.categories?.includes(category))
+    );
+  };
+
+  // Update displayed strains when search query or categories change
   useEffect(() => {
-    if (searchQuery.length >= 3) {
-      setIsSearching(true);
+    let filteredStrains = [...allStrains];
+    
+    if (searchQuery) {
+      setIsSearchMode(true);
       const query = searchQuery.toLowerCase();
-      const filtered = strains.filter(strain => 
+      filteredStrains = filteredStrains.filter(strain =>
         strain.title.toLowerCase().includes(query) ||
         strain.breeder.toLowerCase().includes(query) ||
-        strain.effect.toLowerCase().includes(query) ||
-        strain.genetics.type.toLowerCase().includes(query) ||
         strain.description.toLowerCase().includes(query)
       );
-      setStrains(filtered);
-      setCurrentIndex(0);
     } else {
-      setIsSearching(false);
-      // Reset to random strain view
-      fetch('/api/seeds')
-        .then(res => res.json())
-        .then(data => {
-          setStrains(data);
-          const randomIndex = Math.floor(Math.random() * data.length);
-          setRandomStrain(data[randomIndex]);
-        });
+      setIsSearchMode(false);
     }
-  }, [searchQuery]);
 
-  const handlers = useSwipeable({
-    onSwipedLeft: () => {
-      if (isSearching && strains.length > 1) {
-        setCurrentIndex((prev) => 
-          prev === strains.length - 1 ? 0 : prev + 1
-        );
-      }
-      if (!isSearching) {
-        const randomIndex = Math.floor(Math.random() * strains.length);
-        setRandomStrain(strains[randomIndex]);
-      }
-    },
-    onSwipedRight: () => {
-      if (isSearching && strains.length > 1) {
-        setCurrentIndex((prev) => 
-          prev === 0 ? strains.length - 1 : prev - 1
-        );
-      }
-      if (!isSearching) {
-        const randomIndex = Math.floor(Math.random() * strains.length);
-        setRandomStrain(strains[randomIndex]);
-      }
-    },
-  });
+    filteredStrains = filterStrainsByCategories(filteredStrains, selectedCategories);
+    setStrains(filteredStrains);
+    setPage(1);
+    
+    if (searchQuery || selectedCategories.length > 0) {
+      setDisplayedStrains(filteredStrains.slice(0, strainsPerPage));
+    } else {
+      setDisplayedStrains(getRandomStrains(filteredStrains, strainsPerPage));
+    }
+  }, [searchQuery, selectedCategories, allStrains]);
 
-  const handleStrainClick = () => {
-    const strain = isSearching ? strains[currentIndex] : randomStrain;
-    if (strain) {
-      router.push(`/showcase?id=${strain.id}`);
+  const loadMore = () => {
+    if (isSearchMode) {
+      const nextPage = page + 1;
+      const newStrains = strains.slice(0, nextPage * strainsPerPage);
+      setDisplayedStrains(newStrains);
+      setPage(nextPage);
+    } else {
+      setDisplayedStrains(getRandomStrains(strains, strainsPerPage));
     }
   };
 
-  if (!strains.length) {
-    return <div className="text-gray-500 text-center text-sm p-4">No strains found</div>;
+  const handlers = useSwipeable({
+    onSwipedLeft: () => {
+      if (!isSearchMode) {
+        setDisplayedStrains(getRandomStrains(strains, strainsPerPage));
+      }
+    },
+    onSwipedRight: () => {
+      if (!isSearchMode) {
+        setDisplayedStrains(getRandomStrains(strains, strainsPerPage));
+      }
+    },
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true
+  });
+
+  const handleStrainClick = (strain) => {
+    router.push(`/showcase?id=${strain.id}`);
+  };
+
+  if (!displayedStrains.length) {
+    return (
+      <div className="text-center p-8">
+        <p className="text-gray-600">Keine Sorten gefunden</p>
+      </div>
+    );
   }
 
-  const currentStrain = isSearching ? strains[currentIndex] : randomStrain;
-  if (!currentStrain) return null;
-
   return (
-    <div {...handlers} className="w-full bg-white">
-      <div className="mx-auto px-4">
-        {!isSearching && (
-          <h3 className="text-center text-sm font-medium text-gray-500 mb-3">
-            Strain des Augenblicks
-          </h3>
-        )}
-        
-        <div 
-          className="flex gap-4 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer" 
-          onClick={handleStrainClick}
-        >
-          {/* Thumbnail */}
-          <div className="relative w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
-            <img
-              src={currentStrain.imageUrl}
-              alt={currentStrain.title}
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-          {/* Content */}
-          <div className="flex-1 min-w-0">
-            <h3 className="text-base font-medium text-gray-900">{currentStrain.title}</h3>
-            <p className="text-xs text-gray-600 mb-1">{currentStrain.breeder}</p>
-            
-            <div className="flex gap-3 text-xs mb-2">
-              <span className="text-gray-700">THC: {currentStrain.thc}</span>
-              <span className="text-gray-700">CBD: {currentStrain.cbd}</span>
+    <div className="space-y-6">
+      <div {...handlers} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {displayedStrains.map((strain) => (
+          <div 
+            key={strain.id}
+            className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer p-4" 
+            onClick={() => handleStrainClick(strain)}
+          >
+            {/* Thumbnail */}
+            <div className="relative w-3/4 mx-auto aspect-square rounded-lg overflow-hidden mb-4">
+              <img
+                src={strain.imageUrl}
+                alt={strain.title}
+                className="w-full h-full object-cover"
+              />
             </div>
-            
-            <p className="text-xs text-gray-600 line-clamp-2">{currentStrain.description}</p>
-          </div>
 
-          {/* Navigation Arrows (only show if searching and multiple results) */}
-          {isSearching && strains.length > 1 && (
-            <div className="flex flex-col justify-center gap-1">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setCurrentIndex(prev => prev === 0 ? strains.length - 1 : prev - 1);
-                }}
-                className="p-1 hover:bg-gray-100 rounded-full"
-              >
-                <svg className="w-4 h-4 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-                </svg>
-              </button>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setCurrentIndex(prev => prev === strains.length - 1 ? 0 : prev + 1);
-                }}
-                className="p-1 hover:bg-gray-100 rounded-full"
-              >
-                <svg className="w-4 h-4 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
+            {/* Content */}
+            <div className="space-y-3">
+              {/* Header */}
+              <div className="flex items-start justify-between">
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900">{strain.title}</h3>
+                  <p className="text-sm text-gray-600">by {strain.breeder}</p>
+                </div>
+                <div className="px-3 py-1 bg-purple-50 rounded-full">
+                  <span className="text-sm font-medium text-purple-700">{strain.type || 'Hybrid'}</span>
+                </div>
+              </div>
+              
+              {/* Key Stats */}
+              <div className="flex gap-3">
+                <div className="px-3 py-1.5 bg-amber-50 rounded-lg">
+                  <span className="text-sm font-medium text-amber-700">THC {strain.thc}</span>
+                </div>
+                <div className="px-3 py-1.5 bg-green-50 rounded-lg">
+                  <span className="text-sm font-medium text-green-700">CBD {strain.cbd}</span>
+                </div>
+              </div>
             </div>
-          )}
-        </div>
-        
-        {/* Results counter when searching */}
-        {isSearching && strains.length > 1 && (
-          <p className="text-center text-xs text-gray-500 mt-2">
-            {currentIndex + 1} of {strains.length} results
-          </p>
-        )}
+          </div>
+        ))}
       </div>
-       {/* New Random Strain*/}
-      {!isSearching && (
-        <div className="flex items-center justify-center gap-4 mt-4 mb-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full 
-                         bg-[#8E0365]
-                        shadow-lg transform hover:scale-105 transition-all">
-       
-            <span className="text-xs font-medium text-white swipeleft">
-              Wisch nach links für einen neuen Zufallsstrain
-            </span>
-          </div>
 
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full 
-                        bg-[#8E0365]
-                        shadow-lg transform hover:scale-105 transition-all">
-    
-            <span className="text-xs font-medium text-white swipeleft">
-              Wisch nach rechts um Dir den Strain zu merken
-            </span>
-          </div>
+      {/* Controls Section */}
+      <div className="flex flex-col items-center gap-4 mt-6">
+        {/* Show More Button - Always visible if there are more results */}
+        {strains.length > displayedStrains.length && (
+          <button
+            onClick={loadMore}
+            className="px-6 py-2.5 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+          >
+            Zeig mir mehr
+          </button>
+        )}
+        
+        {/* Random Strains Hint - Always visible */}
+        <div className="px-4 py-2 bg-purple-50 rounded-lg flex items-center gap-2">
+          <svg className="w-4 h-4 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+          </svg>
+          <span className="text-sm text-purple-700">
+            Wische für neue Zufallssorten
+          </span>
         </div>
-      )}
+      </div>
     </div>
   );
 };

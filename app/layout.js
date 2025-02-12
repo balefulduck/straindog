@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import { Inter } from 'next/font/google'
+import { Encode_Sans } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,13 +13,12 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const encode = {
+const encodeSans = Encode_Sans({
+  subsets: ['latin'],
   variable: '--font-encode',
   display: 'swap',
-  adjustFontFallback: false,
   weight: ['400', '500', '600', '700'],
-  style: ['normal'],
-}
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -29,13 +29,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased font-encode`}
+        className={`${encodeSans.variable} ${geistSans.variable} ${geistMono.variable} antialiased font-encode`}
       >
         <div className="min-h-screen">
           {children}

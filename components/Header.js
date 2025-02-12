@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-const Header = ({ onEditorOpen }) => {
+const Header = () => {
   const router = useRouter();
 
   return (
@@ -27,27 +27,6 @@ const Header = ({ onEditorOpen }) => {
         <h1 className="text-white text-xl font-bold">Dr. Cannabis</h1>
         <span className="text-white text-xl font-bold">Samen</span>
       </div>
-      {onEditorOpen && (
-        <button
-          onClick={onEditorOpen}
-          className="p-2 rounded-full transition-colors"
-          style={{ backgroundColor: 'rgba(0, 102, 102, 0.5)' }}
-        >
-          <svg 
-            className="w-6 h-6 text-white" 
-            fill="none" 
-            viewBox="0 0 24 24" 
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-            />
-          </svg>
-        </button>
-      )}
     </header>
   );
 };
