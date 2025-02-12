@@ -148,11 +148,11 @@ const StrainPreview = ({ searchQuery, selectedCategories }) => {
         )}
         
         <div 
-          className="flex gap-4 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer" 
+          className="flex gap-6 p-5 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer" 
           onClick={handleStrainClick}
         >
           {/* Thumbnail */}
-          <div className="relative w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
+          <div className="relative w-32 h-32 flex-shrink-0 rounded-lg overflow-hidden">
             <img
               src={currentStrain.imageUrl}
               alt={currentStrain.title}
@@ -162,15 +162,33 @@ const StrainPreview = ({ searchQuery, selectedCategories }) => {
 
           {/* Content */}
           <div className="flex-1 min-w-0">
-            <h3 className="text-base font-medium text-gray-900">{currentStrain.title}</h3>
-            <p className="text-xs text-gray-600 mb-1">{currentStrain.breeder}</p>
-            
-            <div className="flex gap-3 text-xs mb-2">
-              <span className="text-gray-700">THC: {currentStrain.thc}</span>
-              <span className="text-gray-700">CBD: {currentStrain.cbd}</span>
+            {/* Header */}
+            <div className="flex items-start justify-between mb-2">
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900">{currentStrain.title}</h3>
+                <p className="text-sm text-gray-600">by {currentStrain.breeder}</p>
+              </div>
+              <div className="px-3 py-1 bg-purple-50 rounded-full">
+                <span className="text-sm font-medium text-purple-700">{currentStrain.type || 'Hybrid'}</span>
+              </div>
             </div>
             
-            <p className="text-xs text-gray-600 line-clamp-2">{currentStrain.description}</p>
+            {/* Key Stats */}
+            <div className="flex gap-4 mb-3">
+              <div className="px-3 py-1.5 bg-amber-50 rounded-lg">
+                <span className="text-sm font-medium text-amber-700">THC {currentStrain.thc}</span>
+              </div>
+              <div className="px-3 py-1.5 bg-green-50 rounded-lg">
+                <span className="text-sm font-medium text-green-700">CBD {currentStrain.cbd}</span>
+              </div>
+            </div>
+            
+            {/* Quick Preview */}
+            <div className="mt-1">
+              <p className="text-sm text-gray-600 line-clamp-2">
+                {currentStrain.description}
+              </p>
+            </div>
           </div>
 
           {/* Navigation Arrows (only show if searching and multiple results) */}
