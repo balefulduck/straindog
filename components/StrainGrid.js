@@ -25,12 +25,9 @@ const StrainGrid = () => {
       
       <main className="pt-[5vh] p-4">
         <div className="max-w-7xl mx-auto">
-          <div className="flex justify-between items-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-900">Alle Sorten</h1>
-            <PDFCreator strains={strains} />
-          </div>
+         
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-16">
             {strains.map((strain) => (
               <div
                 key={strain.id}
@@ -60,6 +57,13 @@ const StrainGrid = () => {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Footer with subtle PDF download */}
+          <div className="border-t border-gray-100 pt-8 pb-16 mt-auto">
+            <div className="flex justify-center">
+              <PDFCreator strains={strains} />
+            </div>
           </div>
         </div>
       </main>
