@@ -2,8 +2,10 @@
 import { useState, useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const StrainPreview = ({ searchQuery }) => {
+  const router = useRouter();
   const [strains, setStrains] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [randomStrain, setRandomStrain] = useState(null);
@@ -31,6 +33,8 @@ const StrainPreview = ({ searchQuery }) => {
       const filtered = strains.filter(strain => 
         strain.title.toLowerCase().includes(query) ||
         strain.breeder.toLowerCase().includes(query) ||
+        strain.effect.toLowerCase().includes(query) ||
+        strain.genetics.type.toLowerCase().includes(query) ||
         strain.description.toLowerCase().includes(query)
       );
       setStrains(filtered);
@@ -73,6 +77,13 @@ const StrainPreview = ({ searchQuery }) => {
     },
   });
 
+  const handleStrainClick = () => {
+    const strain = isSearching ? strains[currentIndex] : randomStrain;
+    if (strain) {
+      router.push(`/showcase?id=${strain.id}`);
+    }
+  };
+
   if (!strains.length) {
     return <div className="text-gray-500 text-center text-sm p-4">No strains found</div>;
   }
@@ -89,7 +100,10 @@ const StrainPreview = ({ searchQuery }) => {
           </h3>
         )}
         
-        <div className="flex gap-4 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+        <div 
+          className="flex gap-4 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer" 
+          onClick={handleStrainClick}
+        >
           {/* Thumbnail */}
           <div className="relative w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
             <img
@@ -112,12 +126,14 @@ const StrainPreview = ({ searchQuery }) => {
             <p className="text-xs text-gray-600 line-clamp-2">{currentStrain.description}</p>
           </div>
 
-        
           {/* Navigation Arrows (only show if searching and multiple results) */}
           {isSearching && strains.length > 1 && (
             <div className="flex flex-col justify-center gap-1">
               <button
-                onClick={() => setCurrentIndex(prev => prev === 0 ? strains.length - 1 : prev - 1)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCurrentIndex(prev => prev === 0 ? strains.length - 1 : prev - 1);
+                }}
                 className="p-1 hover:bg-gray-100 rounded-full"
               >
                 <svg className="w-4 h-4 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -125,7 +141,10 @@ const StrainPreview = ({ searchQuery }) => {
                 </svg>
               </button>
               <button
-                onClick={() => setCurrentIndex(prev => prev === strains.length - 1 ? 0 : prev + 1)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCurrentIndex(prev => prev === strains.length - 1 ? 0 : prev + 1);
+                }}
                 className="p-1 hover:bg-gray-100 rounded-full"
               >
                 <svg className="w-4 h-4 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -135,7 +154,7 @@ const StrainPreview = ({ searchQuery }) => {
             </div>
           )}
         </div>
-
+        
         {/* Results counter when searching */}
         {isSearching && strains.length > 1 && (
           <p className="text-center text-xs text-gray-500 mt-2">

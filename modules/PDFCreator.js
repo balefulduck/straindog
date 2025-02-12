@@ -1,60 +1,100 @@
 "use client";
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
+import { jsPDF } from "jspdf";
 
-export default function ProductPDFGenerator(data) {
-    const generatePDF = async () => {
-        try {
-            const pdf = new jsPDF("p", "mm", "a4");
-            const seedList = data.src;
-            
-            for (let i = 0; i < seedList.length; i++) {
-                const product = seedList[i];
-                if (i !== 0) pdf.addPage();
+const PDFCreator = ({ strains }) => {
+  const createPDF = () => {
+    const doc = new jsPDF();
+    let currentPage = 1;
 
-                pdf.setFontSize(16);
-                pdf.text(product.title, 20, 20);
+    strains.forEach((strain, index) => {
+      if (index > 0) {
+        doc.addPage();
+        currentPage++;
+      }
 
-                // Load image
-                try {
-                    const img = await loadImage(product.imageUrl);
-                    pdf.addImage(img, "JPEG", 20, 30, 100, 75);
-                } catch (error) {
-                    console.error("Failed to load image:", error);
-                    // Add placeholder text if image fails to load
-                    pdf.text("Image not available", 20, 50);
-                }
+      // Add title
+      doc.setFontSize(24);
+      doc.setTextColor(142, 3, 101); // #8E0365
+      doc.text(strain.title, 20, 20);
 
-                // Add description
-                const textLines = pdf.splitTextToSize(product.description, 170);
-                pdf.text(textLines, 20, 120);
-            }
+      // Add breeder
+      doc.setFontSize(16);
+      doc.setTextColor(100);
+      doc.text(strain.breeder || 'Unknown Breeder', 20, 30);
 
-            pdf.save("products.pdf");
-        } catch (error) {
-            console.error("Error generating PDF:", error);
-        }
-    };
+      // Add description
+      doc.setFontSize(12);
+      doc.setTextColor(60);
+      const descriptionLines = doc.splitTextToSize(strain.description || 'No description available', 170);
+      doc.text(descriptionLines, 20, 45);
 
-    // Helper function to load image
-    const loadImage = (url) => {
-        return new Promise((resolve, reject) => {
-            const img = new Image();
-            img.crossOrigin = "Anonymous";  // Handle CORS issues
-            img.onload = () => resolve(img);
-            img.onerror = reject;
-            img.src = url;
+      // Add THC and CBD content
+      doc.setFontSize(14);
+      doc.setTextColor(0);
+      doc.text(`THC: ${strain.thc || 'N/A'}    CBD: ${strain.cbd || 'N/A'}`, 20, 80);
+
+      // Add genetics if available
+      if (strain.genetics) {
+        doc.setFontSize(14);
+        doc.text('Genetics:', 20, 100);
+        doc.setFontSize(12);
+        doc.text([
+          `Type: ${strain.genetics.type || 'N/A'}`,
+          `Mother: ${strain.genetics.mother || 'N/A'}`,
+          `Father: ${strain.genetics.father || 'N/A'}`
+        ], 30, 110);
+      }
+
+      // Add terpenes if available
+      if (strain.terpenes && strain.terpenes.length > 0) {
+        doc.setFontSize(14);
+        doc.text('Terpene Profile:', 20, 140);
+        doc.setFontSize(12);
+        strain.terpenes.forEach((terpene, idx) => {
+          doc.text(`${terpene.name}: ${terpene.percentage}`, 30, 150 + (idx * 10));
         });
-    };
+      }
 
-    return (
-        <div className="flex flex-col items-center justify-center min-h-screen">
-            <button
-                onClick={generatePDF}
-                className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition-colors"
-            >
-                Download Product PDF
-            </button>
-        </div>
-    );
-}
+      // Add effect if available
+      if (strain.effect) {
+        doc.setFontSize(14);
+        doc.text('Effect:', 20, 190);
+        doc.setFontSize(12);
+        const effectLines = doc.splitTextToSize(strain.effect, 150);
+        doc.text(effectLines, 30, 200);
+      }
+
+      // Add page number
+      doc.setFontSize(10);
+      doc.setTextColor(150);
+      doc.text(`Page ${currentPage} of ${strains.length}`, 180, 10, { align: 'right' });
+    });
+
+    // Save the PDF
+    doc.save('strain-catalog.pdf');
+  };
+
+  return (
+    <button
+      onClick={createPDF}
+      className="fixed top-4 right-4 bg-[#8E0365] text-white px-4 py-2 rounded-lg shadow-lg hover:bg-opacity-90 transition-colors flex items-center gap-2"
+    >
+      <svg 
+        className="w-5 h-5" 
+        fill="none" 
+        viewBox="0 0 24 24" 
+        stroke="currentColor"
+      >
+        <path 
+          strokeLinecap="round" 
+          strokeLinejoin="round" 
+          strokeWidth={2} 
+          d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" 
+        />
+      </svg>
+      PDF Katalog
+    </button>
+  );
+};
+
+export default PDFCreator;
