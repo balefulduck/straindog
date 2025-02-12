@@ -4,6 +4,7 @@ import { useSwipeable } from "react-swipeable";
 import { useSearchParams } from 'next/navigation';
 import SeedListEditor from "./SeedListEditor";
 import Header from "./Header";
+import Image from 'next/image';
 
 const ProductShowcase = () => {
   const searchParams = useSearchParams();
@@ -60,82 +61,77 @@ const ProductShowcase = () => {
       <main {...handlers} className="pt-[5vh] p-4">
         <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
           <div className="p-8">
-            <div className="flex flex-col md:flex-row gap-8">
-              {/* Left side: Title, Subtitle, and Content */}
-              <div className="flex-1">
-                <h1 className="text-3xl font-bold text-gray-900 mb-2">{currentStrain.title}</h1>
-                <h2 className="text-xl text-gray-600 mb-6">{currentStrain.breeder}</h2>
-                
-                <div className="grid grid-cols-1 gap-6">
-                  {/* Kurzgesagt Section */}
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <h3 className="font-semibold text-lg mb-2">Kurzgesagt</h3>
-                    <p className="text-gray-700">{currentStrain.description}</p>
-                  </div>
-                  
-                
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Left Column - Image */}
+              <div>
+                <Image
+                  src={currentStrain.imageUrl}
+                  alt={currentStrain.title}
+                  width={500}
+                  height={500}
+                  className="rounded-lg w-full h-auto"
+                  onError={(e) => {
+                    e.target.src = "https://images.leafly.com/flower-images/defaults/generic/strain-1.png";
+                  }}
+                />
               </div>
 
-              {/* Right side: Image and Additional Info */}
-              <div className="flex-1">
-                <div className="relative h-64 mb-6 rounded-lg overflow-hidden">
-                  <img
-                    src={currentStrain.imageUrl}
-                    alt={currentStrain.title}
-                    className="w-full h-full object-cover"
-                  />
+              {/* Right Column - Info */}
+              <div className="flex flex-col h-full justify-between">
+                {/* Title and Basic Info */}
+                <div className="mb-4">
+                  <h2 className="text-2xl font-medium mb-1">{currentStrain.title}</h2>
+                  <p className="text-gray-600 font-extralight mb-3">{currentStrain.breeder}</p>
+                  <div className="flex gap-4 mb-4">
+                    <div className="bg-gray-50 px-3 py-2 rounded">
+                      <span className="font-medium">THC:</span> {currentStrain.thc}
+                    </div>
+                    <div className="bg-gray-50 px-3 py-2 rounded">
+                      <span className="font-medium">CBD:</span> {currentStrain.cbd}
+                    </div>
+                  </div>
+                  <p className="text-gray-700">{currentStrain.description}</p>
                 </div>
+              </div>
+            </div>
 
-                <div className="grid grid-cols-1 gap-6">
-
-
-                  {/* Wirkstoffe Section */}
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <h3 className="font-semibold text-lg mb-2">Wirkstoffe</h3>
-                    <div className="space-y-4">
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <p className="font-medium">THC</p>
-                          <p className="text-gray-700">{currentStrain.thc}</p>
-                        </div>
-                        <div>
-                          <p className="font-medium">CBD</p>
-                          <p className="text-gray-700">{currentStrain.cbd}</p>
-                        </div>
-                      </div>
-                      
-                      <div>
-                        <p className="font-medium mb-2">Terpenrofil</p>
-                        <div className="space-y-2">
-                          {currentStrain.terpenes?.map((terpene, index) => (
-                            <div key={index} className="flex justify-between items-center text-sm">
-                              <span className="text-gray-700">{terpene.name}</span>
-                              <span className="text-gray-500">{terpene.percentage}</span>
-                            </div>
-                          ))}
-                        </div>
+            {/* Bottom Sections */}
+            <div className="mt-8">
+              <div className="grid grid-cols-1 gap-6">
+                {/* Wirkstoffe Section */}
+                <div className="bg-gray-50 p-6 rounded-lg">
+                  <h3 className="text-xl font-semibold mb-4 text-indigo-900 border-b pb-2">Terpenrofil</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                    
+                      <div className="space-y-2">
+                        {currentStrain.terpenes?.map((terpene, index) => (
+                          <div key={index} className="flex justify-between items-center text-sm">
+                            <span>{terpene.name}</span>
+                            <span className="text-gray-600">{terpene.percentage}</span>
+                          </div>
+                        ))}
                       </div>
                     </div>
                   </div>
+                </div>
 
-                  {/* Genetics Section */}
-                  <div className="bg-gray-50 p-4 rounded-lg mt-6">
-                    <h3 className="font-semibold text-lg mb-2">Genetik</h3>
-                    <div className="space-y-2">
+                {/* Genetics Section */}
+                <div className="bg-gray-50 p-6 rounded-lg">
+                  <h3 className="text-xl font-semibold mb-4 text-indigo-900 border-b pb-2">Genetik</h3>
+                  <div className="space-y-4">
+                    <div>
+                      <p className="font-medium">Typ</p>
+                      <p className="text-gray-700">{currentStrain.genetics?.type}</p>
+                    </div>
+                    <div className="grid grid-cols-2 gap-6">
                       <div>
-                        <p className="font-medium">Typ</p>
-                        <p className="text-gray-700">{currentStrain.genetics?.type}</p>
+                        <p className="font-medium">♀</p>
+                        <p className="text-gray-700">{currentStrain.genetics?.mother}</p>
                       </div>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <p className="font-medium">♀</p>
-                          <p className="text-gray-700">{currentStrain.genetics?.mother}</p>
-                        </div>
-                        <div>
-                          <p className="font-medium">♂</p>
-                          <p className="text-gray-700">{currentStrain.genetics?.father}</p>
-                        </div>
+                      <div>
+                        <p className="font-medium">♂</p>
+                        <p className="text-gray-700">{currentStrain.genetics?.father}</p>
                       </div>
                     </div>
                   </div>
