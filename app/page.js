@@ -6,11 +6,11 @@ import StrainPreview from '../components/StrainPreview';
 import Header from '../components/Header';
 
 const categories = [
-  { id: 'high-cbd', label: 'High CBD', color: '#EAB404' },
-  { id: 'high-thc', label: 'High THC', color: '#E77B05' },
-  { id: 'pain', label: 'Schmerzen', color: '#1FC55F' },
-  { id: 'sleep', label: 'Schlafen', color: '#EAB404' },
-  { id: 'energy', label: 'Anregung', color: '#E77B05' }
+  { id: 'high-cbd', label: 'Hoher CBD-Gehalt', color: '#EAB404' },
+  { id: 'high-thc', label: 'Hoher THC-Gehalt', color: '#E77B05' },
+  { id: 'pain', label: 'Schmerzlindernd', color: '#1FC55F' },
+  { id: 'sleep', label: 'Schlaffördernd', color: '#EAB404' },
+  { id: 'energy', label: 'Stimulierend', color: '#E77B05' }
 ];
 
 export default function LandingPage() {
