@@ -4,18 +4,20 @@ import { useSwipeable } from "react-swipeable";
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-const StrainPreview = ({ searchQuery }) => {
+const StrainPreview = ({ searchQuery, selectedCategories }) => {
   const router = useRouter();
   const [strains, setStrains] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [randomStrain, setRandomStrain] = useState(null);
   const [isSearching, setIsSearching] = useState(false);
+  const [allStrains, setAllStrains] = useState([]);
 
   // Load strains and set initial random strain
   useEffect(() => {
     fetch('/api/seeds')
       .then(res => res.json())
       .then(data => {
+        setAllStrains(data);
         setStrains(data);
         if (data.length > 0) {
           const randomIndex = Math.floor(Math.random() * data.length);
@@ -25,32 +27,70 @@ const StrainPreview = ({ searchQuery }) => {
       .catch(error => console.error('Error loading seeds:', error));
   }, []);
 
-  // Handle search
+  const filterStrainsByCategories = (strainList, categories) => {
+    if (!categories.length) return strainList;
+
+    return strainList.filter(strain => {
+      const thcValue = parseFloat(strain.thc);
+      const cbdValue = parseFloat(strain.cbd);
+      const isHighTHC = !isNaN(thcValue) && thcValue >= 20;
+      const isHighCBD = !isNaN(cbdValue) && cbdValue >= 2;
+      
+      return categories.some(category => {
+        switch (category) {
+          case 'high-thc':
+            return isHighTHC;
+          case 'high-cbd':
+            return isHighCBD;
+          case 'pain':
+            return isHighTHC && isHighCBD;
+          case 'sleep':
+            return isHighCBD && strain.terpenes?.some(t => 
+              t.name.toLowerCase().includes('myrcene') || 
+              t.name.toLowerCase().includes('linalool')
+            );
+          case 'energy':
+            return strain.genetics?.type?.toLowerCase().includes('sativa') && 
+                   strain.effect?.toLowerCase().includes('energetic');
+          default:
+            return false;
+        }
+      });
+    });
+  };
+
+  // Handle search and category filtering
   useEffect(() => {
+    let filtered = [...allStrains];
+    
+    // Apply text search if query exists
     if (searchQuery.length >= 3) {
       setIsSearching(true);
       const query = searchQuery.toLowerCase();
-      const filtered = strains.filter(strain => 
+      filtered = filtered.filter(strain => 
         strain.title.toLowerCase().includes(query) ||
         strain.breeder.toLowerCase().includes(query) ||
-        strain.effect.toLowerCase().includes(query) ||
-        strain.genetics.type.toLowerCase().includes(query) ||
-        strain.description.toLowerCase().includes(query)
+        strain.effect?.toLowerCase().includes(query) ||
+        strain.genetics?.type?.toLowerCase().includes(query) ||
+        strain.description?.toLowerCase().includes(query)
       );
+    }
+
+    // Apply category filtering
+    filtered = filterStrainsByCategories(filtered, selectedCategories);
+
+    if (filtered.length > 0) {
       setStrains(filtered);
       setCurrentIndex(0);
+      if (!isSearching) {
+        const randomIndex = Math.floor(Math.random() * filtered.length);
+        setRandomStrain(filtered[randomIndex]);
+      }
     } else {
-      setIsSearching(false);
-      // Reset to random strain view
-      fetch('/api/seeds')
-        .then(res => res.json())
-        .then(data => {
-          setStrains(data);
-          const randomIndex = Math.floor(Math.random() * data.length);
-          setRandomStrain(data[randomIndex]);
-        });
+      setStrains([]);
+      setRandomStrain(null);
     }
-  }, [searchQuery]);
+  }, [searchQuery, selectedCategories, allStrains]);
 
   const handlers = useSwipeable({
     onSwipedLeft: () => {
@@ -59,7 +99,7 @@ const StrainPreview = ({ searchQuery }) => {
           prev === strains.length - 1 ? 0 : prev + 1
         );
       }
-      if (!isSearching) {
+      if (!isSearching && strains.length > 0) {
         const randomIndex = Math.floor(Math.random() * strains.length);
         setRandomStrain(strains[randomIndex]);
       }
@@ -70,7 +110,7 @@ const StrainPreview = ({ searchQuery }) => {
           prev === 0 ? strains.length - 1 : prev - 1
         );
       }
-      if (!isSearching) {
+      if (!isSearching && strains.length > 0) {
         const randomIndex = Math.floor(Math.random() * strains.length);
         setRandomStrain(strains[randomIndex]);
       }
@@ -85,7 +125,14 @@ const StrainPreview = ({ searchQuery }) => {
   };
 
   if (!strains.length) {
-    return <div className="text-gray-500 text-center text-sm p-4">No strains found</div>;
+    return (
+      <div className="text-gray-500 text-center p-4">
+        <p className="text-sm">Keine Sorten gefunden</p>
+        {selectedCategories.length > 0 && (
+          <p className="text-xs mt-2">Versuchen Sie es mit weniger Filterkriterien</p>
+        )}
+      </div>
+    );
   }
 
   const currentStrain = isSearching ? strains[currentIndex] : randomStrain;
