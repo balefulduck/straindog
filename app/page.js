@@ -1,72 +1,93 @@
 "use client";
-import { useState } from "react";
-import { useSwipeable } from "react-swipeable";
-import PDFCreator from "../components/PDFCreator";
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import SeedListEditor from '../components/SeedListEditor';
+import StrainPreview from '../components/StrainPreview';
+import Header from '../components/Header';
 
-const seedList = [
-  {
-    id: 1,
-    title: "Mylar Magic",
-    breeder: "Nine Weeks Harvest",
-    description: "This is a description of Mylar Magic",
-    thc: "22%",
-    cbd: "0.4%",
-    terpenes: "β-Caryophyllen",
-    effect: "",
-    imageUrl: "https://www.tomhemps.com/wp-content/uploads/2024/04/mmstrain.jpg",
-  },
-  {
-    id: 2,
-    title: "White Widow",
-    description: "This is a description of White Widow",
-    thc: "18%",
-    cbd: "0.3%",
-    terpenes: "β-Caryophyllen",
-    effect: "",
-    imageUrl: "https://shop.greenhouseseeds.nl/images/thumbnails/346/453/detailed/10/WHITE_WIDOW.jpg"
-  },
+const categories = [
+  { id: 'high-cbd', label: 'High CBD', color: '#EAB404' },
+  { id: 'high-thc', label: 'High THC', color: '#E77B05' },
+  { id: 'pain', label: 'Schmerzen', color: '#1FC55F' },
+  { id: 'sleep', label: 'Schlafen', color: '#EAB404' },
+  { id: 'energy', label: 'Anregung', color: '#E77B05' }
 ];
 
-export default function ProductShowcase() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % seedList.length);
-  };
-
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + seedList.length) % seedList.length);
-  };
-
-  const handlers = useSwipeable({
-    onSwipedLeft: handleNext,
-    onSwipedRight: handlePrev,
-    preventDefaultTouchmoveEvent: true,
-    trackTouch: true,
-  });
+export default function LandingPage() {
+  const router = useRouter();
+  const [isEditorOpen, setIsEditorOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategories, setSelectedCategories] = useState([]);
 
   return (
-    <div {...handlers} className="flex items-center justify-center min-h-screen bg-gray-700 text-white">
-      <PDFCreator src={seedList}/>
+    <div className="min-h-screen bg-white">
+      <Header onEditorOpen={() => setIsEditorOpen(true)} />
 
-      <div className="max-w-4xl flex flex-col md:flex-row items-center p-4">
-        <div className="md:w-1/2 text-center md:text-left p-4">
-          <h1 className="text-2xl font-bold mb-4">{seedList[currentIndex].title}</h1>
-          <h1 className="text-lg font-bold mb-4">by: {seedList[currentIndex].breeder}</h1>
-          <p className="text-lg">{seedList[currentIndex].description}</p>
-          <h1 className="text-lg font-bold mb-4">Terpene</h1>
-          <p className="text-lg">{seedList[currentIndex].terpenes}</p>
-          <h1 className="text-lg font-bold mb-4">CBD</h1>
-          <p className="text-lg">{seedList[currentIndex].cbd}</p>
+      {/* Main Content */}
+      <main className="pt-[5vh]">
+        {/* Search Section */}
+        <div className="bg-white shadow-sm">
+          <div className="max-w-7xl mx-auto px-4 py-6">
+            <div className="flex flex-col items-center gap-4">
+              <div className="w-full max-w-md">
+                <input
+                  type="text"
+                  placeholder="Suche nach Sorten..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#8E0365] focus:border-transparent"
+                />
+              </div>
+              
+              {/* Categories */}
+              <div className="flex flex-wrap justify-center gap-2">
+                {categories.map((category) => (
+                  <button
+                    key={category.id}
+                    onClick={() => {
+                      if (selectedCategories.includes(category.id)) {
+                        setSelectedCategories(selectedCategories.filter(id => id !== category.id));
+                      } else {
+                        setSelectedCategories([...selectedCategories, category.id]);
+                      }
+                    }}
+                    className={`px-3 py-1 rounded-full text-sm ${
+                      selectedCategories.includes(category.id)
+                        ? 'text-white'
+                        : 'text-gray-700 border border-gray-300'
+                    }`}
+                    style={{
+                      backgroundColor: selectedCategories.includes(category.id)
+                        ? category.color
+                        : 'transparent'
+                    }}
+                  >
+                    {category.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Alle Sorten Button */}
+              <button
+                onClick={() => router.push('/grid')}
+                className="text-sm px-4 py-2 rounded-full bg-[#8E0365] text-white hover:bg-opacity-90 transition-colors shadow-sm"
+              >
+                Alle Sorten
+              </button>
+            </div>
+          </div>
         </div>
-        <div className="md:w-1/2">
-          <img
-            src={seedList[currentIndex].imageUrl}
-            alt={seedList[currentIndex].title}
-            className="rounded-lg shadow-lg"
-          />
+
+        {/* Strain Preview */}
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <StrainPreview searchQuery={searchQuery} selectedCategories={selectedCategories} />
         </div>
-      </div>
+      </main>
+
+      <SeedListEditor
+        isOpen={isEditorOpen}
+        onClose={() => setIsEditorOpen(false)}
+      />
     </div>
   );
 }
