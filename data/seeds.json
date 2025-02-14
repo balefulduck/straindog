@@ -30,7 +30,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://images.leafly.com/flower-images/gg-4.jpg"
+    "imageUrl": "https://images.leafly.com/flower-images/gg-4.jpg",
+    "seedType": "photo"
   },
   {
     "id": 2,
@@ -63,7 +64,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://www.philosopherseeds.com/images/xl/purple-punch_681_8_20220404124720_.jpg"
+    "imageUrl": "https://www.philosopherseeds.com/images/xl/purple-punch_681_8_20220404124720_.jpg",
+    "seedType": "photo"
   },
   {
     "id": 3,
@@ -96,7 +98,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://images.leafly.com/flower-images/AMNESIA-026.jpg?auto=compress%2Cformat&w=350&dpr=1"
+    "imageUrl": "https://images.leafly.com/flower-images/AMNESIA-026.jpg?auto=compress%2Cformat&w=350&dpr=1",
+    "seedType": "photo"
   },
   {
     "id": 4,
@@ -129,7 +132,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://images.leafly.com/flower-images/defaults/generic/strain-1.png?auto=compress%2Cformat&w=350&dpr=1"
+    "imageUrl": "https://images.leafly.com/flower-images/defaults/generic/strain-1.png?auto=compress%2Cformat&w=350&dpr=1",
+    "seedType": "photo"
   },
   {
     "id": 5,
@@ -162,7 +166,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://images.leafly.com/flower-images/gelato.jpg"
+    "imageUrl": "https://images.leafly.com/flower-images/gelato.jpg",
+    "seedType": "photo"
   },
   {
     "id": 6,
@@ -195,7 +200,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://images.leafly.com/flower-images/defaults/purple/strain-7.png?auto=compress%2Cformat&w=215&dpr=1"
+    "imageUrl": "https://images.leafly.com/flower-images/defaults/purple/strain-7.png?auto=compress%2Cformat&w=215&dpr=1",
+    "seedType": "photo"
   },
   {
     "id": 7,
@@ -228,7 +234,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://images.leafly.com/flower-images/defaults/short-dense-heavy/strain-7.png?auto=compress%2Cformat&w=350&dpr=1"
+    "imageUrl": "https://images.leafly.com/flower-images/defaults/short-dense-heavy/strain-7.png?auto=compress%2Cformat&w=350&dpr=1",
+    "seedType": "photo"
   },
   {
     "id": 8,
@@ -261,7 +268,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://leafly-public.imgix.net/strains/photos/FVOnij5QmKHnzJtnACaT_Zkittlez%20-%20Anastasiya%20FastBuds%20(1).jpg?auto=compress%2Cformat&w=350&dpr=1"
+    "imageUrl": "https://leafly-public.imgix.net/strains/photos/FVOnij5QmKHnzJtnACaT_Zkittlez%20-%20Anastasiya%20FastBuds%20(1).jpg?auto=compress%2Cformat&w=350&dpr=1",
+    "seedType": "photo"
   },
   {
     "id": 9,
@@ -294,7 +302,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://shop.greenhouseseeds.nl/images/thumbnails/346/453/detailed/10/WHITE_WIDOW.jpg.jpg"
+    "imageUrl": "https://shop.greenhouseseeds.nl/images/thumbnails/346/453/detailed/10/WHITE_WIDOW.jpg.jpg",
+    "seedType": "photo"
   },
   {
     "id": 10,
@@ -327,7 +336,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://images.leafly.com/flower-images/northern-lights.png?auto=compress%2Cformat&w=350&dpr=1"
+    "imageUrl": "https://images.leafly.com/flower-images/northern-lights.png?auto=compress%2Cformat&w=350&dpr=1",
+    "seedType": "photo"
   },
   {
     "id": 11,
@@ -360,7 +370,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://images.leafly.com/flower-images/blueberry.jpg"
+    "imageUrl": "https://images.leafly.com/flower-images/blueberry.jpg",
+    "seedType": "photo"
   },
   {
     "id": 12,
@@ -393,7 +404,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://images.leafly.com/flower-images/lemon-haze.png?auto=compress%2Cformat&w=350&dpr=1"
+    "imageUrl": "https://images.leafly.com/flower-images/lemon-haze.png?auto=compress%2Cformat&w=350&dpr=1",
+    "seedType": "photo"
   },
   {
     "id": 13,
@@ -426,7 +438,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://leafly-public.imgix.net/strains/photos/caPiyJgdTde4JfAslnWd_TropicanaCookies.png?auto=compress%2Cformat&w=350&dpr=1"
+    "imageUrl": "https://leafly-public.imgix.net/strains/photos/caPiyJgdTde4JfAslnWd_TropicanaCookies.png?auto=compress%2Cformat&w=350&dpr=1",
+    "seedType": "photo"
   },
   {
     "id": 14,
@@ -459,7 +472,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://www.cannaconnection.de/14795-atmn_large_rectangle/cookie-monster.jpg"
+    "imageUrl": "https://www.cannaconnection.de/14795-atmn_large_rectangle/cookie-monster.jpg",
+    "seedType": "photo"
   },
   {
     "id": 15,
@@ -492,7 +506,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://www.cannaconnection.de/14914-atmn_large_rectangle/runtz.jpg"
+    "imageUrl": "https://www.cannaconnection.de/14914-atmn_large_rectangle/runtz.jpg",
+    "seedType": "photo"
   },
   {
     "id": 16,
@@ -525,7 +540,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://shop.greenhouseseeds.nl/images/thumbnails/346/453/detailed/10/GHCheese_3kbv-43.jpg.jpg"
+    "imageUrl": "https://shop.greenhouseseeds.nl/images/thumbnails/346/453/detailed/10/GHCheese_3kbv-43.jpg.jpg",
+    "seedType": "photo"
   },
   {
     "id": 17,
@@ -558,7 +574,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://images.leafly.com/flower-images/super-silver-haze.png?auto=compress%2Cformat&w=350&dpr=1"
+    "imageUrl": "https://images.leafly.com/flower-images/super-silver-haze.png?auto=compress%2Cformat&w=350&dpr=1",
+    "seedType": "photo"
   },
   {
     "id": 18,
@@ -591,7 +608,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://www.ripperseeds.com/534-large_default/brain-cake-feminized-cannabis-seeds.jpg"
+    "imageUrl": "https://www.ripperseeds.com/534-large_default/brain-cake-feminized-cannabis-seeds.jpg",
+    "seedType": "photo"
   },
   {
     "id": 19,
@@ -624,7 +642,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://www.ripperseeds.com/535-large_default/radical-juice-feminized-cannabis-seeds.jpg"
+    "imageUrl": "https://www.ripperseeds.com/535-large_default/radical-juice-feminized-cannabis-seeds.jpg",
+    "seedType": "photo"
   },
   {
     "id": 20,
@@ -657,7 +676,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhWMCdEg2_9LWrKHTzqFdnWHRBPoXe4zolBg&s"
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhWMCdEg2_9LWrKHTzqFdnWHRBPoXe4zolBg&s",
+    "seedType": "auto"
   },
   {
     "id": 21,
@@ -690,7 +710,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://www.nordlandseeds.dk/wp-content/uploads/2023/08/HippieBerry-Exotic-Genetics-cannabisfroe.jpg"
+    "imageUrl": "https://www.nordlandseeds.dk/wp-content/uploads/2023/08/HippieBerry-Exotic-Genetics-cannabisfroe.jpg",
+    "seedType": "photo"
   },
   {
     "id": 22,
@@ -723,7 +744,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://images.leafly.com/flower-images/defaults/generic/strain-14.png?auto=compress%2Cformat&w=350&dpr=1"
+    "imageUrl": "https://images.leafly.com/flower-images/defaults/generic/strain-14.png?auto=compress%2Cformat&w=350&dpr=1",
+    "seedType": "auto"
   },
   {
     "id": 23,
@@ -756,7 +778,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://images.leafly.com/flower-images/white-widow.png?auto=compress%2Cformat&w=350&dpr=1"
+    "imageUrl": "https://images.leafly.com/flower-images/white-widow.png?auto=compress%2Cformat&w=350&dpr=1",
+    "seedType": "auto"
   },
   {
     "id": 24,
@@ -789,7 +812,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://images.leafly.com/flower-images/defaults/generic/strain-11.png?auto=compress%2Cformat&w=350&dpr=1"
+    "imageUrl": "https://images.leafly.com/flower-images/defaults/generic/strain-11.png?auto=compress%2Cformat&w=350&dpr=1",
+    "seedType": "photo"
   },
   {
     "id": 25,
@@ -822,7 +846,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://imgs.search.brave.com/vtiCoCE1B8Cgn-5Fjd3zuDBR123Kz09rlorfKkIq6So/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/c2hvcGlmeS5jb20v/cy9maWxlcy8xLzI0/MjYvMDAxNS9maWxl/cy9yYWluYm93LWt1/c2gtc3RyYWluLW51/Zy1icmlnaHQtY29s/b3JzLWJsYWNrLWJh/Y2tncm91bmQuanBn/P3Y9MTY3NDcxODAz/Mw"
+    "imageUrl": "https://imgs.search.brave.com/vtiCoCE1B8Cgn-5Fjd3zuDBR123Kz09rlorfKkIq6So/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/c2hvcGlmeS5jb20v/cy9maWxlcy8xLzI0/MjYvMDAxNS9maWxl/cy9yYWluYm93LWt1/c2gtc3RyYWluLW51/Zy1icmlnaHQtY29s/b3JzLWJsYWNrLWJh/Y2tncm91bmQuanBn/P3Y9MTY3NDcxODAz/Mw",
+    "seedType": "photo"
   },
   {
     "id": 26,
@@ -855,7 +880,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://www.royalqueenseeds.de/227-1992-large/euphoria.jpg"
+    "imageUrl": "https://www.royalqueenseeds.de/227-1992-large/euphoria.jpg",
+    "seedType": "cbd"
   },
   {
     "id": 27,
@@ -888,7 +914,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://www.royalqueenseeds.de/133-2031-large/critical.jpg"
+    "imageUrl": "https://www.royalqueenseeds.de/133-2031-large/critical.jpg",
+    "seedType": "photo"
   },
   {
     "id": 28,
@@ -921,7 +948,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://seedstockers.de/3246-home_default/gorilla-cookies-fem.jpg"
+    "imageUrl": "https://seedstockers.de/3246-home_default/gorilla-cookies-fem.jpg",
+    "seedType": "photo"
   },
   {
     "id": 29,
@@ -954,7 +982,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://images.leafly.com/flower-images/defaults/generic/strain-4.png?auto=compress%2Cformat&w=350&dpr=1"
+    "imageUrl": "https://images.leafly.com/flower-images/defaults/generic/strain-4.png?auto=compress%2Cformat&w=350&dpr=1",
+    "seedType": "photo"
   },
   {
     "id": 30,
@@ -987,7 +1016,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://imgs.search.brave.com/JnjO1EAWOR-QBB42AkFrXd3J9Z6RYvcjtP8SCNsYvsM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YWxjaGltaWF3ZWIu/Y29tL2ltYWdlcy9t/L21pbW9zYS14LW9y/YW5nZS1wdW5jaF8x/NDcyOV8xXzIwMjEw/NDA3MDk1NTEzXy5q/cGc"
+    "imageUrl": "https://imgs.search.brave.com/JnjO1EAWOR-QBB42AkFrXd3J9Z6RYvcjtP8SCNsYvsM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YWxjaGltaWF3ZWIu/Y29tL2ltYWdlcy9t/L21pbW9zYS14LW9y/YW5nZS1wdW5jaF8x/NDcyOV8xXzIwMjEw/NDA3MDk1NTEzXy5q/cGc",
+    "seedType": "photo"
   },
   {
     "id": 31,
@@ -1020,7 +1050,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://www.exoticseed.eu/sites/default/files/2018-11/monstermash_b_940x1350.png"
+    "imageUrl": "https://www.exoticseed.eu/sites/default/files/2018-11/monstermash_b_940x1350.png",
+    "seedType": "photo"
   },
   {
     "id": 32,
@@ -1053,7 +1084,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://imgs.search.brave.com/oMUik_OBF2WDHzP7ajn1kRbwuQYP0C_tRzprViK-h8o/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YmFybmV5c2Zhcm0u/Y29tL2ltYWdlcy9w/cm9kdWN0cy9vZy1r/dXNoX2NpcmNsZV9u/ZXdfMjFfMTI4NTM1/LndlYnA"
+    "imageUrl": "https://imgs.search.brave.com/oMUik_OBF2WDHzP7ajn1kRbwuQYP0C_tRzprViK-h8o/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YmFybmV5c2Zhcm0u/Y29tL2ltYWdlcy9w/cm9kdWN0cy9vZy1r/dXNoX2NpcmNsZV9u/ZXdfMjFfMTI4NTM1/LndlYnA",
+    "seedType": "photo"
   },
   {
     "id": 33,
@@ -1086,7 +1118,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://images.leafly.com/flower-images/defaults/red-orange-amber/strain-1.png?auto=compress%2Cformat&w=350&dpr=1"
+    "imageUrl": "https://images.leafly.com/flower-images/defaults/red-orange-amber/strain-1.png?auto=compress%2Cformat&w=350&dpr=1",
+    "seedType": "photo"
   },
   {
     "id": 34,
@@ -1119,7 +1152,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://imgs.search.brave.com/1YkJsufGxBBpBT7-H1c0hzboerRYhtCGpuWmVVdMh-0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9rb25v/cGxpc2VtZW5hLmNv/bS9pbWFnZS9jYWNo/ZS9jYXRhbG9nL2Fm/Z2hhbmkxLTUwMHg1/MDAuanBn"
+    "imageUrl": "https://imgs.search.brave.com/1YkJsufGxBBpBT7-H1c0hzboerRYhtCGpuWmVVdMh-0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9rb25v/cGxpc2VtZW5hLmNv/bS9pbWFnZS9jYWNo/ZS9jYXRhbG9nL2Fm/Z2hhbmkxLTUwMHg1/MDAuanBn",
+    "seedType": "photo"
   },
   {
     "id": 35,
@@ -1152,7 +1186,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://images.leafly.com/flower-images/defaults/generic/strain-14.png?auto=compress%2Cformat&w=350&dpr=1"
+    "imageUrl": "https://images.leafly.com/flower-images/defaults/generic/strain-14.png?auto=compress%2Cformat&w=350&dpr=1",
+    "seedType": "photo"
   },
   {
     "id": 36,
@@ -1185,7 +1220,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://www.zamnesia.com/5864-16378-large/fastbuds-autoflowering-purple-lemonade-feminisiert.jpg"
+    "imageUrl": "https://www.zamnesia.com/5864-16378-large/fastbuds-autoflowering-purple-lemonade-feminisiert.jpg",
+    "seedType": "auto"
   },
   {
     "id": 37,
@@ -1218,7 +1254,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://www.zamnesia.com/6113-17102-large/exotic-seed-purple-shot-feminisiert.jpg"
+    "imageUrl": "https://www.zamnesia.com/6113-17102-large/exotic-seed-purple-shot-feminisiert.jpg",
+    "seedType": "photo"
   },
   {
     "id": 38,
@@ -1251,7 +1288,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://www.royalqueenseeds.de/148-1991-large/royal-medic.jpg"
+    "imageUrl": "https://www.royalqueenseeds.de/148-1991-large/royal-medic.jpg",
+    "seedType": "cbd"
   },
   {
     "id": 39,
@@ -1284,7 +1322,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://img.sensiseeds.com/images/thumbs/0000272_skunk-1-feminized-seeds_800.webp"
+    "imageUrl": "https://img.sensiseeds.com/images/thumbs/0000272_skunk-1-feminized-seeds_800.webp",
+    "seedType": "photo"
   },
   {
     "id": 40,
@@ -1317,7 +1356,8 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://www.royalqueenseeds.de/327-3878-large/stress-killer.jpg"
+    "imageUrl": "https://www.royalqueenseeds.de/327-3878-large/stress-killer.jpg",
+    "seedType": "cbd"
   },
   {
     "id": 41,
@@ -1350,6 +1390,7 @@
     "seedlist": {
       "seedcount": null
     },
-    "imageUrl": "https://oaseeds.com/6794-thickbox_default/exotic-seeds-triple-a-auto-aaa.jpg"
+    "imageUrl": "https://oaseeds.com/6794-thickbox_default/exotic-seeds-triple-a-auto-aaa.jpg",
+    "seedType": "photo"
   }
 ]
