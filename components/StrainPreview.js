@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
 import { useRouter } from 'next/navigation';
 
-const StrainPreview = ({ searchQuery, selectedCategories }) => {
+const StrainPreview = ({ searchQuery, selectedCategories, seedType }) => {
   const router = useRouter();
   const [strains, setStrains] = useState([]);
   const [displayedStrains, setDisplayedStrains] = useState([]);
@@ -39,7 +39,7 @@ const StrainPreview = ({ searchQuery, selectedCategories }) => {
     );
   };
 
-  // Update displayed strains when search query or categories change
+  // Update displayed strains when search query, categories, or seedType change
   useEffect(() => {
     let filteredStrains = [...allStrains];
     
@@ -55,16 +55,21 @@ const StrainPreview = ({ searchQuery, selectedCategories }) => {
       setIsSearchMode(false);
     }
 
+    // Filter by seed type
+    if (seedType) {
+      filteredStrains = filteredStrains.filter(strain => strain.seedType === seedType);
+    }
+
     filteredStrains = filterStrainsByCategories(filteredStrains, selectedCategories);
     setStrains(filteredStrains);
     setPage(1);
     
-    if (searchQuery || selectedCategories.length > 0) {
+    if (searchQuery || selectedCategories.length > 0 || seedType) {
       setDisplayedStrains(filteredStrains.slice(0, strainsPerPage));
     } else {
       setDisplayedStrains(getRandomStrains(filteredStrains, strainsPerPage));
     }
-  }, [searchQuery, selectedCategories, allStrains]);
+  }, [searchQuery, selectedCategories, seedType, allStrains]);
 
   const loadMore = () => {
     if (isSearchMode) {
