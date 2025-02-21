@@ -148,7 +148,7 @@ const StrainPreview = ({ searchQuery, selectedCategories, seedType }) => {
               {/* Key Stats */}
               <div className="flex gap-3">
                 <div className="px-3 py-1.5 bg-amber-50 rounded-lg">
-                  <span className="text-sm font-medium text-amber-700">THC {strain.thc}</span>
+                  <span className="text-sm font-medium text-amber-700">THC = {strain.thc}</span>
                 </div>
                 <div className="px-3 py-1.5 bg-green-50 rounded-lg">
                   <span className="text-sm font-medium text-green-700">CBD {strain.cbd}</span>
