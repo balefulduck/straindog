@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
 import { useRouter } from 'next/navigation';
 
+
 const StrainPreview = ({ searchQuery, selectedCategories, seedType }) => {
   const router = useRouter();
   const [strains, setStrains] = useState([]);
@@ -12,13 +13,17 @@ const StrainPreview = ({ searchQuery, selectedCategories, seedType }) => {
   const [isSearchMode, setIsSearchMode] = useState(false);
   const strainsPerPage = 3;
 
+
   // Load strains and set initial random strains
   useEffect(() => {
+   
     fetch('/api/seeds')
       .then(res => res.json())
       .then(data => {
+   console.log(data);
         setAllStrains(data);
         setStrains(data);
+       
         if (data.length > 0) {
           const randomStrains = getRandomStrains(data, strainsPerPage);
           setDisplayedStrains(randomStrains);
