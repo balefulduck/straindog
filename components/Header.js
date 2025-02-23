@@ -10,7 +10,7 @@ const Header = () => {
       className="fixed top-0 left-0 right-0 h-[5vh] shadow-lg z-50 
                  flex items-center justify-between px-6"
       style={{
-        background: 'linear-gradient(90deg, #8E0365 0%, #E77B05 50%, #1FC55F 100%)'
+        background: 'linear-gradient(90deg, #738728 0%, #AEBC16  100%)'
       }}
     >
       <div 

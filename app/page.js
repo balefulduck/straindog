@@ -6,8 +6,8 @@ import StrainPreview from '../components/StrainPreview';
 import Header from '../components/Header';
 
 const categories = [
-  { id: 'high-cbd', label: 'Hoher CBD-Gehalt', color: '#EAB404' },
-  { id: 'high-thc', label: 'Hoher THC-Gehalt', color: '#E77B05' },
+ // { id: 'high-cbd', label: 'Hoher CBD-Gehalt', color: '#EAB404' },
+ // { id: 'high-thc', label: 'Hoher THC-Gehalt', color: '#E77B05' },
   { id: 'pain', label: 'Schmerzlindernd', color: '#1FC55F' },
   { id: 'sleep', label: 'Schlaffördernd', color: '#EAB404' },
   { id: 'energy', label: 'Stimulierend', color: '#E77B05' }
@@ -74,8 +74,7 @@ export default function LandingPage() {
                     {[
                       { value: 'photo', label: 'Photoperiod Strains' },
                       { value: 'auto', label: 'Automatic' },
-                      { value: 'cbd', label: 'Pure CBD' },
-                      { value: 'regular', label: 'Regular Seeds' }
+                     // { value: 'regular', label: 'Regular Seeds' }
                     ].map((type) => (
                       <button
                         key={type.value}
@@ -96,7 +95,7 @@ export default function LandingPage() {
                 onClick={() => router.push('/grid')}
                 className="text-sm px-4 py-2 rounded-full bg-[#8E0365] text-white hover:bg-opacity-90 transition-colors shadow-sm"
               >
-                Alle Sorten
+                Ganzer Katalog
               </button>
             </div>
           </div>
