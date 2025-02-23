@@ -1,9 +1,11 @@
-"use client";
 import { useState, useEffect } from 'react';
+import { createSeedList, updateSeedList, getSeedList } from '@/utils/db';
 import styles from './SeedListEditor.module.css';
 
-const SeedListEditor = ({ isOpen, onClose, seedList, onUpdateSeedList }) => {
-  const [seeds, setSeeds] = useState(seedList);
+export default function SeedListEditor({ isOpen, onClose, seedList: initialSeedList, onUpdateSeedList }) {
+  const [seedList, setSeedList] = useState(initialSeedList);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [selectedSeed, setSelectedSeed] = useState(null);
   const [editForm, setEditForm] = useState({
     id: '',
@@ -111,48 +113,46 @@ const SeedListEditor = ({ isOpen, onClose, seedList, onUpdateSeedList }) => {
     }));
   };
 
+  const handleSave = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      
+      let result;
+      if (seedList._id) {
+        // Update existing list
+        result = await updateSeedList(seedList._id, seedList.strains);
+      } else {
+        // Create new list
+        result = await createSeedList('default_user', seedList.strains);
+      }
+      
+      onUpdateSeedList({ ...seedList, _id: result.id, _rev: result.rev });
+      onClose();
+    } catch (err) {
+      setError('Failed to save seed list. Please try again.');
+      console.error('Error saving seed list:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const updatedSeeds = selectedSeed
-      ? seeds.map(seed => seed.id === selectedSeed.id ? editForm : seed)
-      : [...seeds, { ...editForm, id: Date.now() }];
+      ? seedList.strains.map(seed => seed.id === selectedSeed.id ? editForm : seed)
+      : [...seedList.strains, { ...editForm, id: Date.now() }];
     
-    try {
-      const response = await fetch('/api/seeds', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updatedSeeds),
-      });
-
-      if (!response.ok) throw new Error('Failed to update seeds');
-      
-      setSeeds(updatedSeeds);
-      onUpdateSeedList(updatedSeeds);
-      resetForm();
-    } catch (error) {
-      console.error('Error updating seeds:', error);
-    }
+    setSeedList({ ...seedList, strains: updatedSeeds });
+    handleSave();
   };
 
   const handleDelete = async (id) => {
     try {
-      const updatedSeeds = seeds.filter(seed => seed.id !== id);
+      const updatedSeeds = seedList.strains.filter(seed => seed.id !== id);
       
-      const response = await fetch('/api/seeds', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updatedSeeds),
-      });
-
-      if (!response.ok) throw new Error('Failed to delete seed');
-
-      setSeeds(updatedSeeds);
-      onUpdateSeedList(updatedSeeds);
-      resetForm();
+      setSeedList({ ...seedList, strains: updatedSeeds });
+      handleSave();
     } catch (error) {
       console.error('Error deleting seed:', error);
     }
@@ -170,7 +170,7 @@ const SeedListEditor = ({ isOpen, onClose, seedList, onUpdateSeedList }) => {
           </button>
         </div>
         <div className={styles.seedList}>
-          {seeds.map(seed => (
+          {seedList.strains.map(seed => (
             <div
               key={seed.id}
               className={`${styles.seedItem} ${selectedSeed?.id === seed.id ? styles.selected : ''}`}
@@ -394,5 +394,3 @@ const SeedListEditor = ({ isOpen, onClose, seedList, onUpdateSeedList }) => {
     </div>
   );
 };
-
-export default SeedListEditor;
