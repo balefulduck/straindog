@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
 import { useRouter } from 'next/navigation';
-
+import { useComparison } from '@/context/ComparisonContext';
 
 const StrainPreview = ({ searchQuery, selectedCategories, seedType }) => {
   const router = useRouter();
@@ -13,6 +13,7 @@ const StrainPreview = ({ searchQuery, selectedCategories, seedType }) => {
   const [isSearchMode, setIsSearchMode] = useState(false);
   const strainsPerPage = 3;
 
+  const { comparisonStrains, addToComparison } = useComparison();
 
   // Load strains and set initial random strains
   useEffect(() => {
@@ -120,38 +121,56 @@ const StrainPreview = ({ searchQuery, selectedCategories, seedType }) => {
         {displayedStrains.map((strain) => (
           <div 
             key={strain.id}
-            className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer p-4" 
-            onClick={() => handleStrainClick(strain)}
+            className="relative bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow p-4" 
           >
-            {/* Thumbnail */}
-            <div className="relative w-3/4 mx-auto aspect-square rounded-lg overflow-hidden mb-4">
-              <img
-                src={strain.imageUrl}
-                alt={strain.title}
-                className="w-full h-full object-cover"
-              />
-            </div>
+            {/* Comparison Button */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                addToComparison(strain);
+              }}
+              disabled={comparisonStrains.some(s => s.id === strain.id)}
+              className="absolute top-2 right-2 bg-green-500 hover:bg-green-600 disabled:bg-gray-300 
+                       text-white rounded-full w-8 h-8 flex items-center justify-center 
+                       transition-colors z-10"
+              title="Add to comparison"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
+              </svg>
+            </button>
 
-            {/* Content */}
-            <div className="space-y-3">
-              {/* Header */}
-              <div className="flex items-start justify-between">
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900">{strain.title}</h3>
-                  <p className="text-sm text-gray-600">by {strain.breeder}</p>
-                </div>
-                <div className="px-3 py-1 bg-purple-50 rounded-full">
-                  <span className="text-sm font-medium text-purple-700">{strain.type || 'Hybrid'}</span>
-                </div>
+            <div onClick={() => handleStrainClick(strain)} className="cursor-pointer">
+              {/* Thumbnail */}
+              <div className="relative w-3/4 mx-auto aspect-square rounded-lg overflow-hidden mb-4">
+                <img
+                  src={strain.imageUrl}
+                  alt={strain.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
-              
-              {/* Key Stats */}
-              <div className="flex gap-3">
-                <div className="px-3 py-1.5 bg-amber-50 rounded-lg">
-                  <span className="text-sm font-medium text-amber-700">THC {strain.thc}</span>
+
+              {/* Content */}
+              <div className="space-y-3">
+                {/* Header */}
+                <div className="flex items-start justify-between">
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900">{strain.title}</h3>
+                    <p className="text-sm text-gray-600">by {strain.breeder}</p>
+                  </div>
+                  <div className="px-3 py-1 bg-purple-50 rounded-full">
+                    <span className="text-sm font-medium text-purple-700">{strain.type || 'Hybrid'}</span>
+                  </div>
                 </div>
-                <div className="px-3 py-1.5 bg-green-50 rounded-lg">
-                  <span className="text-sm font-medium text-green-700">CBD {strain.cbd}</span>
+                
+                {/* Key Stats */}
+                <div className="flex gap-3">
+                  <div className="px-3 py-1.5 bg-amber-50 rounded-lg">
+                    <span className="text-sm font-medium text-amber-700">THC {strain.thc}</span>
+                  </div>
+                  <div className="px-3 py-1.5 bg-green-50 rounded-lg">
+                    <span className="text-sm font-medium text-green-700">CBD {strain.cbd}</span>
+                  </div>
                 </div>
               </div>
             </div>
