@@ -4,6 +4,7 @@ import { useSwipeable } from "react-swipeable";
 import { useRouter } from 'next/navigation';
 import { useComparison } from '@/context/ComparisonContext';
 
+
 const StrainPreview = ({ searchQuery, selectedCategories, seedType }) => {
   const router = useRouter();
   const [strains, setStrains] = useState([]);
@@ -118,11 +119,12 @@ const StrainPreview = ({ searchQuery, selectedCategories, seedType }) => {
   return (
     <div className="space-y-6">
       <div {...handlers} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {displayedStrains.map((strain) => (
+        {displayedStrains.map((strain, index) => (
           <div 
             key={strain.id}
             className="relative bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow p-4" 
           >
+   
             {/* Comparison Button */}
             <button
               onClick={(e) => {
